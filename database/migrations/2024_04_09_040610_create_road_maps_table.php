@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('years');
             $table->text('description');
-            $table->integer('total');
             $table->timestamps();
         });
     }

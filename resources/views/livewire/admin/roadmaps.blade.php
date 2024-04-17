@@ -3,7 +3,7 @@
         <!-- Top Bar -->
         <div class="items-center justify-between lg:flex">
         <div class=" lg:mb-0">
-            <h3 class="text-2xl font-bold text-gray-900">Althafunnissa Cycle</h3>
+            <h3 class="text-2xl font-bold text-gray-900">Road Map</h3>
         </div>
         
         <div class="items-center sm:flex">
@@ -61,11 +61,10 @@
                     <x-table.heading class="pr-0 w-8">
                         <x-input.checkbox wire:model="selectPage" />
                     </x-table.heading>
-
+                    <x-table.heading sortable multi-column wire:click="sortBy('years')" :direction="$sorts['years'] ?? null">Tahun</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('description')" :direction="$sorts['description'] ?? null">Deskripsi</x-table.heading>
                     
-
-
-                    <x-table.heading>Gambar</x-table.heading>
+                    
                     <x-table.heading />
                 </x-slot>
 
@@ -91,10 +90,17 @@
                             <x-input.checkbox wire:model="selected" value="{{ $item->id }}" />
                         </x-table.cell>
 
+
                         <x-table.cell >
-                            <img src="{{ Storage::url($item->photo) }}" class="w-auto h-auto">
+                            {{ $item->years }}
                         </x-table.cell>
-                        
+                        <x-table.cell >
+                            {{ $item->description }}
+                        </x-table.cell>
+
+                        <x-table.cell>
+                            <x-button.link wire:click="edit({{ $item->id }})">Edit</x-button.link>
+                        </x-table.cell>
                     </x-table.row>
                     @empty
                     <x-table.row>
@@ -141,47 +147,20 @@
     <!-- Save Product Modal -->
     <form wire:submit.prevent="save">
         <x-modal.dialog wire:model.defer="showEditModal">
-            <x-slot name="title">Tambah Althafunissa Cycle</x-slot>
+            <x-slot name="title">Tambah Founder</x-slot>
 
             <x-slot name="content">
                 <div class="grid grid-cols-6 gap-6 py-4">
-                        
+                        <div class="col-span-6">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Tahun</label>
+                            <input type="number" name="years" wire:model.lazy="editing.years" id="years" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Fill the text" required>
+                        </div>
 
                         <div class="col-span-6">
-                            <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Image</label>
-                            <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-                              <div class="text-center">
-                                <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                                  <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
-                                </svg>
-                                <div class="mt-4 flex text-sm leading-6 text-gray-600">
-                                  <label for="file-upload" class="w-full relative cursor-pointer rounded-md bg-white font-semibold text-slate-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-slate-600 focus-within:ring-offset-2 hover:text-slate-500">
-                                    <span>Upload a file</span>
-                                    <input id="file-upload" wire:model="upload" name="file-upload" type="file" class="sr-only">
-
-                                    @error('upload') <span class="error text-red-600">{{ $message }}</span> @enderror
-                                  </label>
-                                  
-                                </div>
-                                
-                                <div wire:loading wire:target="upload">
-                                    <p class="text-sm leading-5 text-gray-600">
-                                        Uploading...<br/>
-                                    </p>
-                                </div>
-
-                                <p class="text-xs leading-5 text-gray-600">
-                                    
-                                    @if ($upload)
-                                            {{ $upload->getClientOriginalName() }}<br/>
-                                            
-                                    @else
-                                        PNG, JPG, GIF up to 10MB
-                                    @endif
-                                </p>
-                              </div>
-                            </div>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
+                            <textarea rows="4" wire:model="editing.description" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-slate-500 focus:border-slate-500" placeholder="Fill the text">{{ $editing->description }}</textarea>
                         </div>
+
                     </div>
             </x-slot>
 
@@ -197,27 +176,5 @@
                 </div>                
             </x-slot>
         </x-modal.dialog>
-    </form>
-
-    <form wire:submit.prevent="deleteFileSelected">
-        <x-modal.confirmation wire:model.defer="showDeleteFileModal">
-            <x-slot name="title">Delete</x-slot>
-
-            <x-slot name="content">
-                <div class="py-8 text-cool-gray-700">Are you sure?</div>
-            </x-slot>
-
-            <x-slot name="footer">
-                <div class="flex justify-center w-full pb-4 mt-4 space-x-4">
-                    <button type="button" wire:click="$set('showDeleteFileModal', false)" class="w-full justify-center text-gray-600 inline-flex items-center hover:text-gray-600 hover:bg-gray-50 border border-gray-300 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                        Cancel
-                    </button>
-
-                    <button type="submit" class="w-full justify-center text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                        Save
-                    </button>
-                </div>  
-            </x-slot>
-        </x-modal.confirmation>
     </form>
 </div>

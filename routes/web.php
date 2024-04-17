@@ -98,6 +98,11 @@ Route::middleware([
         return view('pages.admin.portofolio');
     })->name('admin-portofolio');
 
+    # roadmap belum bisa nampung array
+    Route::get('/admin/road-map', function () {
+        return view('pages.admin.roadmap');
+    })->name('admin-roadmap');
+
     Route::get('/admin/cycle', function () {
         return view('pages.admin.cycle');
     })->name('admin-cycle');

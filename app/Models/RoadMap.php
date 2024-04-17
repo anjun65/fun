@@ -12,7 +12,5 @@ class RoadMap extends Model
     protected $fillable = [
         'years',
         'description',
-        'total',
     ];
-    
 }
