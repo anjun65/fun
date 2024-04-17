@@ -8,13 +8,12 @@ use App\Http\Livewire\DataTable\WithSorting;
 use App\Http\Livewire\DataTable\WithCachedRows;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
-use App\Models\Kontak;
+use App\Models\Event;
 use Illuminate\Support\Carbon;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 
-
-class Kontaks extends Component
+class Events extends Component
 {
     use WithPerPagePagination, WithSorting, WithBulkActions, WithCachedRows;
     use WithFileUploads;
@@ -28,7 +27,7 @@ class Kontaks extends Component
     ];
 
 
-    public Kontak $editing;
+    public Event $editing;
 
     public $upload;
 
@@ -57,7 +56,7 @@ class Kontaks extends Component
 
     public function makeBlankTransaction()
     {
-        return Kontak::make();
+        return Event::make();
     }
 
     public function toggleShowFilters()
@@ -76,7 +75,7 @@ class Kontaks extends Component
         $this->showEditModal = true;
     }
 
-    public function edit(Kontak $transaction)
+    public function edit(Event $transaction)
     {
 
         $this->useCachedRows();
@@ -121,7 +120,7 @@ class Kontaks extends Component
     public function getRowsQueryProperty()
     {
 
-        $query = Kontak::query()
+        $query = Event::query()
             ->when($this->filters['min_tanggal'], fn ($query, $min_tanggal) => $query->where('created_at', '>=', Carbon::parse($min_tanggal)))
             ->when($this->filters['max_tanggal'], fn ($query, $max_tanggal) => $query->where('created_at', '<=', Carbon::parse($max_tanggal)));
 
@@ -137,7 +136,7 @@ class Kontaks extends Component
 
     public function render()
     {
-        return view('livewire.admin.kontaks', [
+        return view('livewire.admin.events', [
             'items' => $this->rows,
         ]);
     }

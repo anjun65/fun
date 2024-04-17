@@ -101,11 +101,15 @@ Route::middleware([
 
     Route::get('/admin/kontak', function () {
         return view('pages.admin.kontak');
-    })->name('admin-portofolio');
+    })->name('admin-kontak');
 
     Route::get('/admin/testimonial', function () {
         return view('pages.admin.testimonial');
-    })->name('admin-portofolio');
+    })->name('admin-testimonial');
+
+    Route::get('/admin/event', function () {
+        return view('pages.admin.event');
+    })->name('admin-event');
 
     #belum
     Route::get('/admin/lifestyle', function () {
