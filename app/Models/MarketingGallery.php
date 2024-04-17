@@ -13,6 +13,9 @@ class MarketingGallery extends Model
         'marketing_id',
         'photo',
     ];
-    
-    
+
+    public function marketing()
+    {
+        return $this->belongsTo(Marketing::class, 'marketing_id', 'id');
+    }
 }

@@ -3,18 +3,17 @@
 namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
-
 use App\Http\Livewire\DataTable\WithSorting;
 use App\Http\Livewire\DataTable\WithCachedRows;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
-use App\Models\Event;
-use App\Models\EventGallery;
+use App\Models\Marketing;
+use App\Models\MarketingGallery;
 use Illuminate\Support\Carbon;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 
-class Events extends Component
+class Markets extends Component
 {
     use WithPerPagePagination, WithSorting, WithBulkActions, WithCachedRows;
     use WithFileUploads;
@@ -30,7 +29,7 @@ class Events extends Component
     ];
 
 
-    public Event $editing;
+    public Marketing $editing;
 
     public $upload = [];
 
@@ -43,7 +42,6 @@ class Events extends Component
     {
         return [
             'editing.judul' => 'required',
-            'editing.category' => 'required',
             'editing.description' => 'required',
             'upload.*' => 'required|image|',
         ];
@@ -58,7 +56,7 @@ class Events extends Component
 
     public function deleteFileSelected()
     {
-        $item = EventGallery::findorFail($this->file_id);
+        $item = MarketingGallery::findorFail($this->file_id);
         $item->delete();
         $this->file_id = null;
         $this->showDeleteFileModal = false;
@@ -76,7 +74,7 @@ class Events extends Component
 
     public function makeBlankTransaction()
     {
-        return Event::make();
+        return Marketing::make();
     }
 
     public function toggleShowFilters()
@@ -95,7 +93,7 @@ class Events extends Component
         $this->showEditModal = true;
     }
 
-    public function edit(Event $transaction)
+    public function edit(Marketing $transaction)
     {
 
         $this->useCachedRows();
@@ -128,8 +126,8 @@ class Events extends Component
         $this->editing->save();
 
         foreach ($this->upload as $upload) {
-            EventGallery::create([
-                'event_id' => $this->editing->id,
+            MarketingGallery::create([
+                'marketing_id' => $this->editing->id,
                 'photo' => Storage::disk('public')->put('assets/image', $upload),
             ]);
         }
@@ -147,7 +145,7 @@ class Events extends Component
     public function getRowsQueryProperty()
     {
 
-        $query = Event::query()
+        $query = Marketing::query()
             ->when($this->filters['min_tanggal'], fn ($query, $min_tanggal) => $query->where('created_at', '>=', Carbon::parse($min_tanggal)))
             ->when($this->filters['max_tanggal'], fn ($query, $max_tanggal) => $query->where('created_at', '<=', Carbon::parse($max_tanggal)));
 
@@ -163,7 +161,7 @@ class Events extends Component
 
     public function render()
     {
-        return view('livewire.admin.events', [
+        return view('livewire.admin.markets', [
             'items' => $this->rows,
         ]);
     }

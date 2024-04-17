@@ -13,4 +13,9 @@ class Marketing extends Model
         'judul',
         'description',
     ];
+
+    public function file()
+    {
+        return $this->hasMany(MarketingGallery::class, 'marketing_id');
+    }
 }
