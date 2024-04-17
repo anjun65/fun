@@ -81,21 +81,24 @@ Route::get('/kontak-kami', function () {
 })->name('kontak-kami');
 
 
-
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
+    Route::get('/admin', function () {
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/dashboard/client', function () {
+    Route::get('/admin/client', function () {
         return view('pages.admin.client');
     })->name('message');
 
-    Route::get('/dashboard/portofolio', function () {
+    Route::get('/admin/portofolio', function () {
+        return view('pages.admin.portofolio');
+    })->name('admin-portofolio');
+
+    Route::get('/admin/lifestyle', function () {
         return view('pages.admin.portofolio');
     })->name('admin-portofolio');
 });
