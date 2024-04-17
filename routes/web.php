@@ -100,6 +100,10 @@ Route::middleware([
 
 
 
+    Route::get('/admin/struktur-organisasi', function () {
+        return view('pages.admin.struktur');
+    })->name('admin-struktur');
+
     Route::get('/admin/corporate-responsibility', function () {
         return view('pages.admin.responsibility');
     })->name('admin-responsibility');
@@ -122,7 +126,15 @@ Route::middleware([
 
 
 
+
     #belum
+
+    Route::get('/admin/media-coverage', function () {
+        return view('pages.admin.media-coverage');
+    })->name('admin-media-coverage');
+
+
+
     Route::get('/admin/lifestyle', function () {
         return view('pages.admin.lifestyle');
     })->name('admin-portofolio');

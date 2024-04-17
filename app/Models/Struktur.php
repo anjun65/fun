@@ -13,5 +13,6 @@ class Struktur extends Model
         'name',
         'jabatan',
         'departement',
+        'photo',
     ];
 }
