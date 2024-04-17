@@ -3,36 +3,34 @@
 namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
+
 use App\Http\Livewire\DataTable\WithSorting;
 use App\Http\Livewire\DataTable\WithCachedRows;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
-use App\Models\Lifestyle as LifestyleModel;
+use App\Models\Kontak;
 use Illuminate\Support\Carbon;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
 
-class Lifestyle extends Component
-{
 
+class Kontaks extends Component
+{
     use WithPerPagePagination, WithSorting, WithBulkActions, WithCachedRows;
+    use WithFileUploads;
 
     public $showEditModal = false;
     public $showDeleteModal = false;
     public $showFilters = false;
     public $filters = [
-        'first_name' => '',
-        'status_queue' => true,
-        'status_process' => true,
-        'status_done' => true,
         'min_tanggal' => null,
         'max_tanggal' => null,
     ];
 
 
-    public Client $editing;
+    public Kontak $editing;
 
-    public $password;
+    public $upload;
 
     protected $queryString = ['sorts'];
 
@@ -42,7 +40,9 @@ class Lifestyle extends Component
     public function rules()
     {
         return [
-            'editing.status' => 'required|in:' . collect(Client::STATUSES)->keys()->implode(','),
+            'editing.name' => 'required',
+            'editing.nomor' => 'required',
+            'upload' => 'required|image|',
         ];
     }
 
@@ -57,7 +57,7 @@ class Lifestyle extends Component
 
     public function makeBlankTransaction()
     {
-        return Client::make();
+        return Kontak::make();
     }
 
     public function toggleShowFilters()
@@ -76,7 +76,7 @@ class Lifestyle extends Component
         $this->showEditModal = true;
     }
 
-    public function edit(Client $transaction)
+    public function edit(Kontak $transaction)
     {
 
         $this->useCachedRows();
@@ -99,7 +99,12 @@ class Lifestyle extends Component
 
     public function save()
     {
+
         $this->validate();
+
+        $this->editing->fill([
+            'image' => Storage::disk('public')->put('assets/image', $this->upload),
+        ]);
 
         $this->editing->save();
 
@@ -116,12 +121,9 @@ class Lifestyle extends Component
     public function getRowsQueryProperty()
     {
 
-        $query = Client::query()
+        $query = Kontak::query()
             ->when($this->filters['min_tanggal'], fn ($query, $min_tanggal) => $query->where('created_at', '>=', Carbon::parse($min_tanggal)))
-            ->when($this->filters['max_tanggal'], fn ($query, $max_tanggal) => $query->where('created_at', '<=', Carbon::parse($max_tanggal)))
-            ->when($this->filters['status_queue'] == false, fn ($query) => $query->where('status', '!=', 'Queue'))
-            ->when($this->filters['status_process'] == false, fn ($query) => $query->where('status', '!=', 'Process'))
-            ->when($this->filters['status_done'] == false, fn ($query) => $query->where('status', '!=', 'Done'));
+            ->when($this->filters['max_tanggal'], fn ($query, $max_tanggal) => $query->where('created_at', '<=', Carbon::parse($max_tanggal)));
 
         return $this->applySorting($query);
     }
@@ -135,7 +137,7 @@ class Lifestyle extends Component
 
     public function render()
     {
-        return view('livewire.admin.lifestyle', [
+        return view('livewire.admin.kontaks', [
             'items' => $this->rows,
         ]);
     }

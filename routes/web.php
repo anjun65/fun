@@ -98,7 +98,12 @@ Route::middleware([
         return view('pages.admin.portofolio');
     })->name('admin-portofolio');
 
+    #belum
     Route::get('/admin/lifestyle', function () {
-        return view('pages.admin.portofolio');
+        return view('pages.admin.lifestyle');
+    })->name('admin-portofolio');
+
+    Route::get('/admin/kontak', function () {
+        return view('pages.admin.kontak');
     })->name('admin-portofolio');
 });

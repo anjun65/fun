@@ -2,7 +2,7 @@
 
 <x-modal :id="$id" :maxWidth="$maxWidth" {{ $attributes }} overflow-auto>
     
-    <div class="px-6 py-3 text-lg">
+    <div class="px-6 py-3 text-lg text-amber-400">
         {{ $title }}
     </div>
 
