@@ -99,6 +99,10 @@ Route::middleware([
     })->name('admin-portofolio');
 
 
+    Route::get('/admin/journey', function () {
+        return view('pages.admin.journey');
+    })->name('admin-journey');
+
     # visi misi belum bisa nampung array
     Route::get('/admin/visi-misi', function () {
         return view('pages.admin.visi-misi');
@@ -157,4 +161,8 @@ Route::middleware([
     Route::get('/admin/lifestyle', function () {
         return view('pages.admin.lifestyle');
     })->name('admin-portofolio');
+
+    Route::get('/admin/reseller', function () {
+        return view('pages.admin.reseller');
+    })->name('admin-reseller');
 });
