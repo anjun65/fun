@@ -98,7 +98,11 @@ Route::middleware([
         return view('pages.admin.portofolio');
     })->name('admin-portofolio');
 
+    Route::get('/admin/cycle', function () {
+        return view('pages.admin.cycle');
+    })->name('admin-cycle');
 
+    # founder belum bisa nampung array
     Route::get('/admin/founder', function () {
         return view('pages.admin.founder');
     })->name('admin-founder');
