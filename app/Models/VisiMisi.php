@@ -15,7 +15,4 @@ class VisiMisi extends Model
         'visi',
         'misi',
     ];
-    
-    
-    
 }

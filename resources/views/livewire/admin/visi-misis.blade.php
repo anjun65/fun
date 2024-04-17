@@ -3,7 +3,7 @@
         <!-- Top Bar -->
         <div class="items-center justify-between lg:flex">
         <div class=" lg:mb-0">
-            <h3 class="text-2xl font-bold text-gray-900">Road Map</h3>
+            <h3 class="text-2xl font-bold text-gray-900">Visi Misi</h3>
         </div>
         
         <div class="items-center sm:flex">
@@ -61,9 +61,9 @@
                     <x-table.heading class="pr-0 w-8">
                         <x-input.checkbox wire:model="selectPage" />
                     </x-table.heading>
-                    <x-table.heading sortable multi-column wire:click="sortBy('years')" :direction="$sorts['years'] ?? null">Tahun</x-table.heading>
-                    <x-table.heading sortable multi-column wire:click="sortBy('description')" :direction="$sorts['description'] ?? null">Deskripsi</x-table.heading>
-                    
+                    <x-table.heading sortable multi-column wire:click="sortBy('years')" :direction="$sorts['years'] ?? null">Judul</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('visi')" :direction="$sorts['visi'] ?? null">Deskripsi Visi</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('misi')" :direction="$sorts['misi'] ?? null">Deskripsi Misi</x-table.heading>
                     
                     <x-table.heading />
                 </x-slot>
@@ -92,10 +92,14 @@
 
 
                         <x-table.cell >
-                            {{ $item->years }}
+                            {{ $item->judul }}
                         </x-table.cell>
                         <x-table.cell >
-                            {{ $item->description }}
+                            {{ $item->visi }}
+                        </x-table.cell>
+
+                        <x-table.cell >
+                            {{ $item->misi }}
                         </x-table.cell>
 
                         <x-table.cell>
@@ -147,18 +151,23 @@
     <!-- Save Product Modal -->
     <form wire:submit.prevent="save">
         <x-modal.dialog wire:model.defer="showEditModal">
-            <x-slot name="title">Tambah Road Map</x-slot>
+            <x-slot name="title">Tambah Visi Misi</x-slot>
 
             <x-slot name="content">
                 <div class="grid grid-cols-6 gap-6 py-4">
                         <div class="col-span-6">
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Tahun</label>
-                            <input type="number" name="years" wire:model.lazy="editing.years" id="years" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Fill the text" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Judul</label>
+                            <input type="text" name="judul" wire:model.lazy="editing.judul" id="judul" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Fill the text" required>
                         </div>
 
                         <div class="col-span-6">
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
-                            <textarea rows="4" wire:model="editing.description" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-slate-500 focus:border-slate-500" placeholder="Fill the text">{{ $editing->description }}</textarea>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Visi</label>
+                            <textarea rows="4" wire:model="editing.visi" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-slate-500 focus:border-slate-500" placeholder="Fill the text">{{ $editing->description }}</textarea>
+                        </div>
+
+                        <div class="col-span-6">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Misi</label>
+                            <textarea rows="4" wire:model="editing.misi" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-slate-500 focus:border-slate-500" placeholder="Fill the text">{{ $editing->description }}</textarea>
                         </div>
 
                     </div>

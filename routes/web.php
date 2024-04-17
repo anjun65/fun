@@ -98,6 +98,13 @@ Route::middleware([
         return view('pages.admin.portofolio');
     })->name('admin-portofolio');
 
+
+    # visi misi belum bisa nampung array
+    Route::get('/admin/visi-misi', function () {
+        return view('pages.admin.visi-misi');
+    })->name('admin-visi-misi');
+
+
     # roadmap belum bisa nampung array
     Route::get('/admin/road-map', function () {
         return view('pages.admin.roadmap');
