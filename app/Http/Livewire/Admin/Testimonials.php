@@ -3,20 +3,19 @@
 namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
-
 use App\Http\Livewire\DataTable\WithSorting;
 use App\Http\Livewire\DataTable\WithCachedRows;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
-use App\Models\Kontak;
+use App\Models\Testimonial;
+use app\Models\User;
 use Illuminate\Support\Carbon;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
-use App\Models\User;
 
-
-class Kontaks extends Component
+class Testimonials extends Component
 {
+
     use WithPerPagePagination, WithSorting, WithBulkActions, WithCachedRows;
     use WithFileUploads;
 
@@ -29,7 +28,7 @@ class Kontaks extends Component
     ];
 
 
-    public Kontak $editing;
+    public Testimonial $editing;
 
     public $upload;
 
@@ -41,9 +40,11 @@ class Kontaks extends Component
     public function rules()
     {
         return [
+            'editing.user_id' => 'required',
             'editing.name' => 'required',
-            'editing.nomor' => 'required',
-            'upload' => 'required|image|',
+            'editing.location' => 'required',
+            'editing.description' => 'required',
+            'upload' => 'required|image',
         ];
     }
 
@@ -58,7 +59,7 @@ class Kontaks extends Component
 
     public function makeBlankTransaction()
     {
-        return Kontak::make();
+        return Testimonial::make();
     }
 
     public function toggleShowFilters()
@@ -77,7 +78,7 @@ class Kontaks extends Component
         $this->showEditModal = true;
     }
 
-    public function edit(Kontak $transaction)
+    public function edit(Testimonial $transaction)
     {
 
         $this->useCachedRows();
@@ -100,11 +101,10 @@ class Kontaks extends Component
 
     public function save()
     {
-
         $this->validate();
 
         $this->editing->fill([
-            'image' => Storage::disk('public')->put('assets/image', $this->upload),
+            'photo' => Storage::disk('public')->put('assets/image', $this->upload),
         ]);
 
         $this->editing->save();
@@ -122,7 +122,7 @@ class Kontaks extends Component
     public function getRowsQueryProperty()
     {
 
-        $query = Kontak::query()
+        $query = Testimonial::query()
             ->when($this->filters['min_tanggal'], fn ($query, $min_tanggal) => $query->where('created_at', '>=', Carbon::parse($min_tanggal)))
             ->when($this->filters['max_tanggal'], fn ($query, $max_tanggal) => $query->where('created_at', '<=', Carbon::parse($max_tanggal)));
 
@@ -138,8 +138,12 @@ class Kontaks extends Component
 
     public function render()
     {
-        return view('livewire.admin.kontaks', [
+
+        $users = User::all();
+
+        return view('livewire.admin.testimonials', [
             'items' => $this->rows,
+            'users' => $users,
         ]);
     }
 }

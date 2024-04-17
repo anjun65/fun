@@ -3,7 +3,7 @@
         <!-- Top Bar -->
         <div class="items-center justify-between lg:flex">
         <div class=" lg:mb-0">
-            <h3 class="text-2xl font-bold text-gray-900">Kontak Kami</h3>
+            <h3 class="text-2xl font-bold text-gray-900">Testimonial</h3>
         </div>
         
         <div class="items-center sm:flex">
@@ -91,8 +91,11 @@
                         <x-input.checkbox wire:model="selectPage" />
                     </x-table.heading>
                     <x-table.heading sortable multi-column wire:click="sortBy('nama')" :direction="$sorts['nama'] ?? null">Nama</x-table.heading>
-                    <x-table.heading sortable multi-column wire:click="sortBy('nomor')" :direction="$sorts['nomor'] ?? null">Nomor</x-table.heading>
-                    <x-table.heading sortable multi-column>Foto</x-table.heading>
+                    <x-table.heading sortable multi-column>Gambar</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('description')" :direction="$sorts['description'] ?? null">Deskripsi</x-table.heading>
+                    
+                    
+                    
                     <x-table.heading />
                 </x-slot>
 
@@ -126,6 +129,7 @@
                         <x-table.cell>
                             <img src="{{ Storage::url($item->photo) }}" class="w-auto h-20">
                         </x-table.cell>
+
 
                         <x-table.cell>
                             {{ $item->description }}
@@ -180,18 +184,35 @@
     <!-- Save Product Modal -->
     <form wire:submit.prevent="save">
         <x-modal.dialog wire:model.defer="showEditModal">
-            <x-slot name="title">Tambah CS</x-slot>
+            <x-slot name="title">Tambah Testimonial</x-slot>
 
             <x-slot name="content">
                 <div class="grid grid-cols-6 gap-6 py-4">
+
+                    
                         <div class="col-span-6">
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
-                            <input type="text" name="name" wire:model.lazy="editing.name" id="name" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Nama" required>
+                            <label for="user_id" class="block text-sm font-medium text-gray-700">Pilih User</label>
+                            <select id="user_id" name="user_id" wire:model.lazy="editing.user_id" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                              <option value="" selected>Pilih User</option>
+                                @foreach ($users as $user)
+                                  <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
                         <div class="col-span-6">
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Nomor HP</label>
-                            <input type="text" name="nomor" wire:model.lazy="editing.nomor" id="nomor" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Nomor" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Judul</label>
+                            <input type="text" name="name" wire:model.lazy="editing.name" id="name" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Judul" required>
+                        </div>
+
+                        <div class="col-span-6">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Lokasi</label>
+                            <input type="text" name="location" wire:model.lazy="editing.location" id="location" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Lokasi" required>
+                        </div>
+
+                        <div class="col-span-6">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
+                            <textarea rows="4" wire:model.lazy="editing.description" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-slate-500 focus:border-slate-500" placeholder="Fill the text">{{ $editing->description }}</textarea>
                         </div>
 
                         <div class="col-span-6">

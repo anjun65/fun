@@ -418,7 +418,7 @@
 
             <div id="main-content" class="relative w-full h-full overflow-y-auto bg-white lg:ml-64">
                 <main>
-                    <div class="px-4 pt-6">
+                    <div class=" px-4 pt-6">
                         {{ $slot }}
                     </div>
                 
@@ -426,7 +426,8 @@
 
 
                 
-                {{-- <x-footer/> --}}
+                
+                <x-notification />
             </div>
     
         </div>
