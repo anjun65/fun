@@ -13,4 +13,9 @@ class Responsibility extends Model
         'judul',
         'description',
     ];
+
+    public function file()
+    {
+        return $this->hasMany(ResponsibilityGallery::class, 'responsibility_id');
+    }
 }

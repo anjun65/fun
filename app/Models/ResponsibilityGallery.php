@@ -13,4 +13,9 @@ class ResponsibilityGallery extends Model
         'responsibility_id',
         'photo',
     ];
+
+    public function event()
+    {
+        return $this->belongsTo(Responsibility::class, 'responsibility_id', 'id');
+    }
 }

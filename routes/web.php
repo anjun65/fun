@@ -100,9 +100,13 @@ Route::middleware([
 
 
 
+    Route::get('/admin/corporate-responsibility', function () {
+        return view('pages.admin.responsibility');
+    })->name('admin-responsibility');
+
     Route::get('/admin/market', function () {
         return view('pages.admin.market');
-    })->name('admin-event');
+    })->name('admin-market');
 
     Route::get('/admin/event', function () {
         return view('pages.admin.event');

@@ -3,13 +3,11 @@
         <!-- Top Bar -->
         <div class="items-center justify-between lg:flex">
         <div class=" lg:mb-0">
-            <h3 class="text-2xl font-bold text-gray-900">Event</h3>
+            <h3 class="text-2xl font-bold text-gray-900">Corporate Responsibility</h3>
         </div>
         
         <div class="items-center sm:flex">
             <div class="flex items-center">
-                
-
                 <button id="dropdownDefault" data-dropdown-toggle="dropdown-bulk"
                     class="mb-4 sm:mb-0 mr-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5"
                     type="button">
@@ -61,13 +59,9 @@
                     <x-table.heading class="pr-0 w-8">
                         <x-input.checkbox wire:model="selectPage" />
                     </x-table.heading>
-
-                    
-
-
                     <x-table.heading sortable multi-column wire:click="sortBy('judul')" :direction="$sorts['judul'] ?? null">Judul</x-table.heading>
-                    <x-table.heading sortable multi-column wire:click="sortBy('kategori')" :direction="$sorts['kategori'] ?? null">Kategori</x-table.heading>
                     <x-table.heading sortable multi-column wire:click="sortBy('description')" :direction="$sorts['description'] ?? null">Deskripsi</x-table.heading>
+                    <x-table.heading>Gambar</x-table.heading>
                     <x-table.heading />
                 </x-slot>
 
@@ -96,10 +90,6 @@
 
                         <x-table.cell >
                             {{ $item->judul }}
-                        </x-table.cell>
-
-                        <x-table.cell >
-                            {{ $item->category }}
                         </x-table.cell>
 
 
@@ -183,23 +173,13 @@
     <!-- Save Product Modal -->
     <form wire:submit.prevent="save">
         <x-modal.dialog wire:model.defer="showEditModal">
-            <x-slot name="title">Tambah Event</x-slot>
+            <x-slot name="title">Tambah Marketing Activity</x-slot>
 
             <x-slot name="content">
                 <div class="grid grid-cols-6 gap-6 py-4">
                         <div class="col-span-6">
                             <label class="block mb-2 text-sm font-medium text-gray-900">Judul</label>
-                            <input type="text" name="judul" wire:model.lazy="editing.judul" id="judul" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Judul" required>
-                        </div>
-
-                        <div class="col-span-6">
-                            <label for="category" class="block text-sm font-medium text-gray-700">Kategori</label>
-                            <select id="category" name="category" wire:model.lazy="editing.category" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-                              <option value="" selected>Pilih Kategori</option>
-                              <option value="Blog" selected>Blog</option>
-                              <option value="Event" selected>Event</option>
-                              <option value="Collaboration" selected>Collaboration</option>
-                            </select>
+                            <input type="text" name="judul" wire:model.lazy="editing.judul" id="judul" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Fill the text" required>
                         </div>
 
                         <div class="col-span-6">
@@ -208,7 +188,7 @@
                         </div>
 
                         <div class="col-span-6">
-                            <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Image</label>
+                            <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Upload Gambar</label>
                             <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                               <div class="text-center">
                                 <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
