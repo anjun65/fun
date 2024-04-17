@@ -11,7 +11,12 @@ class Event extends Model
 
     protected $fillable = [
         'judul',
-        'kategori',
+        'category',
         'description',
     ];
+
+    public function file()
+    {
+        return $this->hasMany(EventGallery::class, 'event_id');
+    }
 }

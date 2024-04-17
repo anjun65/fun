@@ -95,16 +95,40 @@
 
 
                         <x-table.cell >
-                            {{ $item->name }}
+                            {{ $item->judul }}
                         </x-table.cell>
 
-                        <x-table.cell>
-                            <img src="{{ Storage::url($item->photo) }}" class="w-auto h-20">
+                        <x-table.cell >
+                            {{ $item->category }}
                         </x-table.cell>
+
 
                         <x-table.cell>
                             {{ $item->description }}
                         </x-table.cell>
+
+                        <x-table.cell >
+
+                            @foreach ( $item->file as $file)
+                                <div class="flex items-center p-3 mb-3.5 border border-gray-200 dark:border-gray-700 rounded-lg">
+                                    
+                                    <div class="mr-4">
+                                        <img src="{{ Storage::url($file->photo) }}" class="w-auto h-20">
+                                    </div>
+                                    <div class="flex items-center ml-auto">
+                                        <button type="button" wire:click="file_delete({{ $file->id }})" class="p-2 rounded hover:bg-gray-100">
+                                            <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                              <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                                            </svg>
+
+                                            <span class="sr-only">Delete</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            @endforeach
+                
+                        </x-table.cell>
+                        
 
                         <x-table.cell>
                             <x-button.link wire:click="edit({{ $item->id }})">Edit</x-button.link>
@@ -160,13 +184,23 @@
             <x-slot name="content">
                 <div class="grid grid-cols-6 gap-6 py-4">
                         <div class="col-span-6">
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
-                            <input type="text" name="name" wire:model.lazy="editing.name" id="name" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Nama" required>
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Judul</label>
+                            <input type="text" name="judul" wire:model.lazy="editing.judul" id="judul" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Judul" required>
                         </div>
 
                         <div class="col-span-6">
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Nomor HP</label>
-                            <input type="text" name="nomor" wire:model.lazy="editing.nomor" id="nomor" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Masukkan Nomor" required>
+                            <label for="category" class="block text-sm font-medium text-gray-700">Kategori</label>
+                            <select id="category" name="category" wire:model.lazy="editing.category" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                              <option value="" selected>Pilih Kategori</option>
+                              <option value="Blog" selected>Blog</option>
+                              <option value="Event" selected>Event</option>
+                              <option value="Collaboration" selected>Collaboration</option>
+                            </select>
+                        </div>
+
+                        <div class="col-span-6">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
+                            <textarea rows="4" wire:model.lazy="editing.description" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-slate-500 focus:border-slate-500" placeholder="Fill the text">{{ $editing->description }}</textarea>
                         </div>
 
                         <div class="col-span-6">
@@ -179,7 +213,7 @@
                                 <div class="mt-4 flex text-sm leading-6 text-gray-600">
                                   <label for="file-upload" class="w-full relative cursor-pointer rounded-md bg-white font-semibold text-slate-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-slate-600 focus-within:ring-offset-2 hover:text-slate-500">
                                     <span>Upload a file</span>
-                                    <input id="file-upload" wire:model="upload" name="file-upload" type="file" class="sr-only">
+                                    <input id="file-upload" wire:model="upload" name="file-upload" multiple="multiple" type="file" class="sr-only">
 
                                     @error('upload') <span class="error text-red-600">{{ $message }}</span> @enderror
                                   </label>
@@ -195,7 +229,9 @@
                                 <p class="text-xs leading-5 text-gray-600">
                                     
                                     @if ($upload)
-                                        {{ $upload->getClientOriginalName() }}
+                                        @foreach ($upload as $photo)
+                                            {{ $photo->getClientOriginalName() }}<br/>
+                                        @endforeach
                                     @else
                                         PNG, JPG, GIF up to 10MB
                                     @endif
@@ -218,5 +254,27 @@
                 </div>                
             </x-slot>
         </x-modal.dialog>
+    </form>
+
+    <form wire:submit.prevent="deleteFileSelected">
+        <x-modal.confirmation wire:model.defer="showDeleteFileModal">
+            <x-slot name="title">Delete</x-slot>
+
+            <x-slot name="content">
+                <div class="py-8 text-cool-gray-700">Are you sure?</div>
+            </x-slot>
+
+            <x-slot name="footer">
+                <div class="flex justify-center w-full pb-4 mt-4 space-x-4">
+                    <button type="button" wire:click="$set('showDeleteFileModal', false)" class="w-full justify-center text-gray-600 inline-flex items-center hover:text-gray-600 hover:bg-gray-50 border border-gray-300 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                        Cancel
+                    </button>
+
+                    <button type="submit" class="w-full justify-center text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                        Save
+                    </button>
+                </div>  
+            </x-slot>
+        </x-modal.confirmation>
     </form>
 </div>

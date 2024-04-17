@@ -9,6 +9,7 @@ use App\Http\Livewire\DataTable\WithCachedRows;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
 use App\Models\Event;
+use App\Models\EventGallery;
 use Illuminate\Support\Carbon;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;
@@ -20,7 +21,9 @@ class Events extends Component
 
     public $showEditModal = false;
     public $showDeleteModal = false;
+    public $showDeleteFileModal = false;
     public $showFilters = false;
+    public $file_id;
     public $filters = [
         'min_tanggal' => null,
         'max_tanggal' => null,
@@ -29,7 +32,7 @@ class Events extends Component
 
     public Event $editing;
 
-    public $upload;
+    public $upload = [];
 
     protected $queryString = ['sorts'];
 
@@ -39,10 +42,35 @@ class Events extends Component
     public function rules()
     {
         return [
-            'editing.name' => 'required',
-            'editing.nomor' => 'required',
-            'upload' => 'required|image|',
+            'editing.judul' => 'required',
+            'editing.category' => 'required',
+            'editing.description' => 'required',
+            'upload.*' => 'required|image|',
         ];
+    }
+
+    public function download_file($id)
+    {
+
+        $item = EventGallery::findorFail($id);
+        return response()->download(storage_path('app/public/' . $item->path), $item->file_name);
+
+        $this->notify('File tidak bisa didownload.');
+    }
+
+    public function file_delete($id)
+    {
+        $this->showDeleteFileModal = true;
+        $this->file_id = $id;
+    }
+
+    public function deleteFileSelected()
+    {
+        $item = EventGallery::findorFail($this->file_id);
+        $item->delete();
+        $this->file_id = null;
+        $this->showDeleteFileModal = false;
+        $this->notify('You are deleted data');
     }
 
     public function mount()
@@ -101,11 +129,18 @@ class Events extends Component
 
         $this->validate();
 
-        $this->editing->fill([
-            'image' => Storage::disk('public')->put('assets/image', $this->upload),
-        ]);
+        // $this->editing->fill([
+        //     'image' => Storage::disk('public')->put('assets/image', $this->upload),
+        // ]);
 
         $this->editing->save();
+
+        foreach ($this->upload as $upload) {
+            EventGallery::create([
+                'event_id' => $this->editing->id,
+                'photo' => Storage::disk('public')->put('assets/image', $upload),
+            ]);
+        }
 
         $this->notify('Data saved successfully.');
 
