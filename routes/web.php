@@ -99,6 +99,9 @@ Route::middleware([
     })->name('admin-portofolio');
 
 
+    Route::get('/admin/founder', function () {
+        return view('pages.admin.founder');
+    })->name('admin-founder');
 
     Route::get('/admin/struktur-organisasi', function () {
         return view('pages.admin.struktur');

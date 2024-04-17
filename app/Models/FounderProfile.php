@@ -10,9 +10,11 @@ class FounderProfile extends Model
     use HasFactory;
 
     protected $fillable = [
+        'nama',
+        'tempat',
+        'tanggal_lahir',
         'pendidikan',
         'profesi',
         'jabatan',
     ];
-    
 }
