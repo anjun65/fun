@@ -99,6 +99,10 @@ Route::middleware([
     })->name('admin-portofolio');
 
 
+    Route::get('/admin/series', function () {
+        return view('pages.admin.series');
+    })->name('admin-series');
+
     Route::get('/admin/journey', function () {
         return view('pages.admin.journey');
     })->name('admin-journey');

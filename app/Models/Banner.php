@@ -12,7 +12,6 @@ class Banner extends Model
     protected $fillable = [
         'cta',
         'description',
+        'link',
     ];
-    
-    
 }
