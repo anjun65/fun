@@ -137,6 +137,10 @@ Route::middleware([
         return view('pages.user.whislist');
     })->name('dashboard');
 
+    Route::get('/user/akun', function () {
+        return view('pages.user.akun');
+    })->name('dashboard');
+
 
 
 

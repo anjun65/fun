@@ -34,6 +34,6 @@
             </li>
           
             <!-- More people... -->
-          </ul>
+        </ul>
     </div>
 </x-user-layout>
