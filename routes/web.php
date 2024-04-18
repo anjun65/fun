@@ -27,6 +27,15 @@ Route::get('/product', function () {
     return view('pages.product');
 });
 
+Route::get('/lifestyle/details', function () {
+    return view('pages.lifestyle');
+});
+
+
+Route::get('/lifestyle/details', function () {
+    return view('pages.lifestyle-details');
+});
+
 #Profile Brand
 Route::get('/our-journey', function () {
     return view('pages.brand.journey');
