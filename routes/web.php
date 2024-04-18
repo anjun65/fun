@@ -250,7 +250,7 @@ Route::middleware([
 
     Route::get('/admin/lifestyle', function () {
         return view('pages.admin.lifestyle');
-    })->name('admin-portofolio');
+    })->name('admin-lifestyle');
 
     Route::get('/admin/reseller', function () {
         return view('pages.admin.reseller');
