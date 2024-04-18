@@ -7,32 +7,30 @@ use App\Http\Livewire\DataTable\WithSorting;
 use App\Http\Livewire\DataTable\WithCachedRows;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
-use App\Models\Portofolio;
+use App\Models\User;
 use Illuminate\Support\Carbon;
-use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Storage;
 
-class Portofolios extends Component
+class Customers extends Component
 {
     use WithPerPagePagination, WithSorting, WithBulkActions, WithCachedRows;
-    use WithFileUploads;
 
     public $showEditModal = false;
     public $showDeleteModal = false;
+    public $showDeleteFileModal = false;
     public $showFilters = false;
+    public $file_id;
     public $filters = [
-        'first_name' => '',
-        'status_queue' => true,
-        'status_process' => true,
-        'status_done' => true,
         'min_tanggal' => null,
         'max_tanggal' => null,
     ];
 
 
-    public Portofolio $editing;
+    public User $editing;
 
-    public $upload;
+    public $profesi = [];
+    public $jabatan = [];
+    public $counterProfesi = 1;
+    public $counterJabatan = 1;
 
     protected $queryString = ['sorts'];
 
@@ -42,11 +40,17 @@ class Portofolios extends Component
     public function rules()
     {
         return [
-            'editing.title' => 'required',
-            'editing.description' => 'required',
-            'upload' => 'required|image|',
+            'editing.nama' => 'required',
+            'editing.tempat' => 'required',
+            'editing.tanggal_lahir' => 'required',
+            'editing.pendidikan' => 'required',
+            'editing.profesi.*' => 'required',
+            'editing.jabatan.*' => 'required',
         ];
     }
+
+
+
 
     public function mount()
     {
@@ -59,7 +63,7 @@ class Portofolios extends Component
 
     public function makeBlankTransaction()
     {
-        return Portofolio::make();
+        return User::make();
     }
 
     public function toggleShowFilters()
@@ -78,7 +82,7 @@ class Portofolios extends Component
         $this->showEditModal = true;
     }
 
-    public function edit(Portofolio $transaction)
+    public function edit(User $transaction)
     {
 
         $this->useCachedRows();
@@ -104,10 +108,6 @@ class Portofolios extends Component
 
         $this->validate();
 
-        $this->editing->fill([
-            'image' => Storage::disk('public')->put('assets/image', $this->upload),
-        ]);
-
         $this->editing->save();
 
         $this->notify('Data saved successfully.');
@@ -123,12 +123,9 @@ class Portofolios extends Component
     public function getRowsQueryProperty()
     {
 
-        $query = Portofolio::query()
+        $query = User::query()
             ->when($this->filters['min_tanggal'], fn ($query, $min_tanggal) => $query->where('created_at', '>=', Carbon::parse($min_tanggal)))
-            ->when($this->filters['max_tanggal'], fn ($query, $max_tanggal) => $query->where('created_at', '<=', Carbon::parse($max_tanggal)))
-            ->when($this->filters['status_queue'] == false, fn ($query) => $query->where('status', '!=', 'Queue'))
-            ->when($this->filters['status_process'] == false, fn ($query) => $query->where('status', '!=', 'Process'))
-            ->when($this->filters['status_done'] == false, fn ($query) => $query->where('status', '!=', 'Done'));
+            ->when($this->filters['max_tanggal'], fn ($query, $max_tanggal) => $query->where('created_at', '<=', Carbon::parse($max_tanggal)));
 
         return $this->applySorting($query);
     }
@@ -142,7 +139,7 @@ class Portofolios extends Component
 
     public function render()
     {
-        return view('livewire.admin.portofolios', [
+        return view('livewire.admin.customers', [
             'items' => $this->rows,
         ]);
     }

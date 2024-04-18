@@ -17,7 +17,7 @@ use App\Http\Controllers\PortofolioController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');;
 
 Route::get('/catalog', function () {
     return view('pages.catalog');
@@ -99,8 +99,24 @@ Route::middleware([
     })->name('admin-portofolio');
 
 
+    #belum perlu rombak db
     Route::get('/admin/series', function () {
         return view('pages.admin.series');
+    })->name('admin-series');
+
+
+    Route::get('/admin/category', function () {
+        return view('pages.admin.category');
+    })->name('admin-category');
+
+    Route::get('/admin/sub-category', function () {
+        return view('pages.admin.sub-category');
+    })->name('admin-sub-category');
+
+
+    #belum lengkap
+    Route::get('/admin/customer', function () {
+        return view('pages.admin.customer');
     })->name('admin-series');
 
     Route::get('/admin/journey', function () {
