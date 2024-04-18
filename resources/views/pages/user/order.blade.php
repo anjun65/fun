@@ -2,7 +2,7 @@
     <div class="md:col-span-3 mt-4 w-full">
         <h2 class="text-2xl font-medium mb-10">Orderan Saya</h2>
 
-        <ul role="list" class="grid grid-cols-1 w-full">
+        <ul role="list" class="grid grid-cols-1 w-full gap-y-4">
             <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
               <div class="flex w-full items-center justify-between space-x-6 p-6">
                 <div class="flex-1 truncate">

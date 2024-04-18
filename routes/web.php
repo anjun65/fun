@@ -36,6 +36,14 @@ Route::get('/lifestyle/details', function () {
     return view('pages.lifestyle-details');
 });
 
+#Blog
+
+Route::get('/blog/wastra-nusantara', function () {
+    return view('pages.blog.wastra-nusantara');
+});
+
+
+
 #Profile Brand
 Route::get('/our-journey', function () {
     return view('pages.brand.journey');
@@ -133,6 +141,10 @@ Route::middleware([
         return view('pages.user.order');
     })->name('dashboard');
 
+    Route::get('/user/riwayat-order', function () {
+        return view('pages.user.riwayat-order');
+    })->name('dashboard');
+
     Route::get('/user/whislist', function () {
         return view('pages.user.whislist');
     })->name('dashboard');
@@ -140,9 +152,6 @@ Route::middleware([
     Route::get('/user/akun', function () {
         return view('pages.user.akun');
     })->name('dashboard');
-
-
-
 
 
 
