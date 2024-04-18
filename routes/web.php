@@ -133,6 +133,10 @@ Route::middleware([
         return view('pages.user.order');
     })->name('dashboard');
 
+    Route::get('/user/whislist', function () {
+        return view('pages.user.whislist');
+    })->name('dashboard');
+
 
 
 
