@@ -65,6 +65,9 @@ Route::get('/media-coverage/details', function () {
 });
 
 #gallery
+Route::get('/gallery/hall-of-fame', function () {
+    return view('pages.gallery.hall-of-fame');
+});
 
 Route::get('/gallery/testimoni', function () {
     return view('pages.gallery.testimoni');
