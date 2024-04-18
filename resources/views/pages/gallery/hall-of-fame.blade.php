@@ -16,13 +16,13 @@
 <div class="mb-10 mt-10">
   <ul class="flex flex-wrap -mb-px  text-sm font-medium gap-x-4 text-center" id="default-tab" data-tabs-toggle="#default-tab-content" role="tablist">
     <li class="me-2" role="presentation">
-        <button class="inline-block border-2 w-24 bg-white py-1 text-gray-700 rounded-lg focus:text-white focus:bg-gray-700 focus:vorder-white" id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Blog</button>
+        <button class="inline-block border-2 border-white w-24 bg-white py-1 text-gray-700 rounded-lg focus:text-white focus:bg-gray-700 focus:border-white hover:bg-gray-700 hover:text-white"  id="profile-tab" data-tabs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Blog</button>
     </li>
     <li class="me-2" role="presentation">
-        <button class="inline-block border-2 w-24 bg-white py-1 text-gray-700 rounded-lg focus:text-white focus:bg-gray-700 focus:vorder-whitehover:text-white hover:border-white" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Event</button>
+        <button class="inline-block border-2 border-white w-24 bg-white py-1 text-gray-700 rounded-lg focus:text-white focus:bg-gray-700 focus:border-white hover:bg-gray-700 hover:text-white hover:border-white" id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab" aria-controls="dashboard" aria-selected="false">Event</button>
     </li>
     <li class="me-2" role="presentation">
-        <button class="inline-block border-2 w-24 bg-white py-1 text-gray-700 rounded-lg focus:text-white focus:bg-gray-700 focus:vorder-white hover:text-white hover:border-white" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Collaboration</button>
+        <button class="inline-block border-2 border-white w-24 bg-white py-1 text-gray-700 rounded-lg focus:text-white focus:bg-gray-700 focus:border-white hover:bg-gray-700 hover:text-white hover:border-white" id="settings-tab" data-tabs-target="#settings" type="button" role="tab" aria-controls="settings" aria-selected="false">Collaboration</button>
     </li>
 </ul>
 

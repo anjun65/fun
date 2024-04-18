@@ -69,6 +69,10 @@ Route::get('/gallery/hall-of-fame', function () {
     return view('pages.gallery.hall-of-fame');
 });
 
+Route::get('/gallery/hall-of-fame/details', function () {
+    return view('pages.gallery.hall-details');
+});
+
 Route::get('/gallery/testimoni', function () {
     return view('pages.gallery.testimoni');
 });
