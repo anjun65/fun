@@ -128,6 +128,17 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
+    #user biasa
+    Route::get('/user/order', function () {
+        return view('pages.user.order');
+    })->name('dashboard');
+
+
+
+
+
+
+    #admin
     Route::get('/admin', function () {
         return view('dashboard');
     })->name('dashboard');
