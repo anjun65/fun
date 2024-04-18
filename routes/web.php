@@ -70,28 +70,34 @@ Route::get('/gallery/marketing-activity', function () {
     return view('pages.gallery.marketing-activity');
 });
 
-Route::get('/gallery/corporate-responsibility/details', function () {
-    return view('pages.gallery.corporate-details');
+Route::get('/gallery/marketing-activity/details', function () {
+    return view('pages.gallery.marketing-details');
 });
+
+
 
 
 Route::get('/gallery/hall-of-fame', function () {
     return view('pages.gallery.hall-of-fame');
 });
 
-Route::get('/gallery/marketing-activity/details', function () {
-    return view('pages.gallery.marketing-details');
+Route::get('/gallery/hall-of-fame/details', function () {
+    return view('pages.gallery.hall-details');
 });
+
+
 
 Route::get('/gallery/corporate-responsibility', function () {
     return view('pages.gallery.corporate-responsibility');
 });
 
-
-
-Route::get('/gallery/hall-of-fame/details', function () {
-    return view('pages.gallery.hall-details');
+Route::get('/gallery/corporate-responsibility/details', function () {
+    return view('pages.gallery.corporate-details');
 });
+
+
+
+
 
 Route::get('/gallery/testimoni', function () {
     return view('pages.gallery.testimoni');
