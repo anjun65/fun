@@ -1,4 +1,4 @@
-<section aria-labelledby="perks-heading" class="bg-gray-50">
+<section aria-labelledby="perks-heading" class="bg-amber-400">
     <h2 id="perks-heading" class="sr-only">Our perks</h2>
 
     <div class="mx-auto max-w-7xl py-24 px-4 sm:px-6 sm:py-32 lg:px-8">

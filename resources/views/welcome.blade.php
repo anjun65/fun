@@ -10,7 +10,6 @@
         <x-home.hall/>
 
         <x-home.cta/>
-
-        <x-home.perks/>
-    </div>      
+    </div>
+    <x-home.perks/>
 </x-guest-layout>
