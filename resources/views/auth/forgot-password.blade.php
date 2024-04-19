@@ -30,7 +30,7 @@
                 </button>
             </div>
 
-            <p class="text-center text-xs mt-4">Sudah memiliki Akun? <a class="text-indigo-400" href="{{ route('login') }}">Daftar Sekarang</a></p>
+            <p class="text-center text-xs mt-4">Sudah memiliki Akun? <a class="text-indigo-400" href="{{ route('login') }}">Masuk</a></p>
         
         </form>
     </x-authentication-card>
