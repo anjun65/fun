@@ -9,8 +9,8 @@
             <div class="mx-auto max-w-2xl lg:max-w-none">
               <h2 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl lg:text-6xl">Our Founder</h2>
               <p class="mx-auto mt-4 max-w-xl font-bold text-2xl text-gray-900">Direktur Utama PT. Althafunissa Fawwaz Indonesia</p>
-              <div class="justify-center items-center align-middle">
-                  <img class="w-24 h-24 rounded-full" src="{{ asset('img/founder.jpg') }}">
+              <div class="my-10 justify-center w-full flex items-center align-middle">
+                  <img class="w-40 h-40 object-center rounded-full" src="{{ asset('img/founder.jpg') }}">
                </div>
                <div class="mx-auto mt-4 max-w-xl font-bold text-base text-gray-900 text-left">
                     <div class="grid grid-cols-3">
