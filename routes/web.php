@@ -162,6 +162,10 @@ Route::middleware([
         return view('pages.user.akun');
     })->name('dashboard');
 
+    Route::get('/user/alamat', function () {
+        return view('pages.user.akun');
+    })->name('dashboard');
+
 
 
     #admin

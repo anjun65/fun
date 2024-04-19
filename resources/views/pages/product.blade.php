@@ -35,6 +35,7 @@
         <!-- Image gallery -->
         <div class="col-span-2 flex flex-col-reverse">
           <div class="aspect-w-1 aspect-h-1 w-full">
+
             <!-- Tab panel, show/hide based on tab state. -->
             <div id="tabs-2-panel-1" aria-labelledby="tabs-2-tab-1" role="tabpanel" tabindex="0">
               <img src="https://tailwindui.com/img/ecommerce-images/product-page-03-product-01.jpg" alt="Angled front view with bag zipped and handles upright." class="h-full w-full object-cover object-center sm:rounded-lg">
@@ -77,6 +78,43 @@
           </form>
 
         </div>
+      </div>
+
+      <div class="mx-auto divide-y divide-gray-900/10">
+        
+        <dl class="mt-10 space-y-6 divide-y divide-gray-900/10">
+          <div class="pt-6">
+            <dt class="bg-amber-300 p-4 ">
+              <button type="button" class="flex w-full items-start justify-between text-left text-gray-900" aria-controls="faq-0" aria-expanded="false">
+                <span class="text-xl font-semibold leading-7">Deskripsi</span>
+                <span class="ml-6 flex h-7 items-center">
+                 
+                  <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+                  </svg>
+                  <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                  </svg>
+                </span>
+              </button>
+            </dt>
+            <dd class="border-2 border-amber-400 p-8" id="faq-0">
+              <p class="text-base leading-7 text-gray-900">
+                Material :<br/>
+                  Gamis ceruti premium<br/>
+                  zipper depan tangan karet<br/>
+                  Applikasi chantily gucci<br/>
+                  full furing, pocket<br/>
+                  printed pattern logo terbaru<br/>
+                  Outer shimmer dior embroidery<br/>
+                  Scarf voal lasercut 120x120cm<br/>
+                  Khimar ceruti with new logo swarovksi AS  <br/>
+              </p>
+            </dd>
+          </div>
+  
+          <!-- More questions... -->
+        </dl>
       </div>
 
       <section aria-labelledby="related-heading" class="mt-10 border-t border-gray-200 py-16 px-4 sm:px-0">

@@ -1,64 +1,21 @@
 <x-user-layout>
     <div class="md:col-span-3 mt-4 w-full">
-        <h2 class="text-2xl font-medium mb-10">Info Akun</h2>
+        <h2 class="text-2xl font-medium mb-10">Alamat</h2>
 
-        <ul role="list" class="grid grid-cols-1 w-full">
-          <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow">
-            <div class="flex w-full items-center justify-between space-x-6 p-6">
-              <div class="flex-1 truncate">
-                <div class="sm:flex sm:items-baseline sm:justify-between">
-                  <div class="sm:w-0 sm:flex-1">
-                    <h1 id="message-heading" class="text-lg font-medium text-gray-900">Detail</h1>
-                  </div>
-              
-                  <div class="mt-4 flex items-center justify-between sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:justify-start">
-                    <div class="relative ml-3 inline-block text-left">
-                      <div class="underline">
-                        Edit
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex items-center space-x-3"> 
-                  </div>
-                    <p class="mt-10 truncate text-sm text-gray-500">Nama Lengkap</p>
-                    <p class="mt-1 truncate text-sm text-gray-900">Asya Munaroh</p>
-                    <p class="mt-10 truncate text-sm text-gray-500">Email</p>
-                    <p class="mt-1 truncate text-sm text-gray-900">Asya212@gmail.com</p>
-                    <p class="mt-10 truncate text-sm text-gray-500">No telephone</p>
-                    <p class="mt-1 truncate text-sm text-gray-900">+62344412142</p>
-
-                    <p class="mt-10 truncate text-sm text-gray-500">Status</p>
-                    <p class="mt-1 truncate text-sm text-gray-900"><span class="inline-block flex-shrink-0 rounded-full bg-green-100 px-2 py-0.5 text-xs font-medium text-green-800">Aktif</span>
-                    </p>
-                </div>
-              <div>
-              </div>
-              
-
-            </div>
-          </li>
-
+        <div class="text-center">
+          <svg class="mx-auto h-12 w-12 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+          </svg>
           
-
-          <li class="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow mt-5">
-            <div class="flex w-full items-center justify-between space-x-6 p-6">
-              <div class="flex-1 truncate">
-                <div class="sm:flex sm:items-baseline sm:justify-between">
-                  <div class="sm:w-0 sm:flex-1">
-                    <h1 id="message-heading" class="text-lg font-medium text-gray-900">Password</h1>
-                  </div>
+          <p class="mt-1 text-sm text-gray-500">Kamu belum menyimpan alamat.</p>
+          <div class="mt-6">
+            <button type="button" class="inline-flex items-center rounded-md border border-transparent bg-amber-400 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-amber-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
               
-                  <div class="mt-4 flex items-center justify-between sm:mt-0 sm:ml-6 sm:flex-shrink-0 sm:justify-start">
-                    <div class="relative ml-3 inline-block text-left">
-                      <div class="underline">
-                        Change Password
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-          </li>
-      </ul>
+              Buat Alamat
+            </button>
+          </div>
+        </div>
+        
     </div>
 </x-user-layout>
