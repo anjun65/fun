@@ -27,14 +27,6 @@ Route::get('/product', function () {
     return view('pages.product');
 });
 
-Route::get('/lifestyle/details', function () {
-    return view('pages.lifestyle');
-});
-
-
-Route::get('/lifestyle/details', function () {
-    return view('pages.lifestyle-details');
-});
 
 #Blog
 Route::get('/blog/moment', function () {
@@ -48,6 +40,16 @@ Route::get('/blog/wastra-nusantara', function () {
 Route::get('/blog/wastra-nusantara/details', function () {
     return view('pages.blog.wastra-details');
 });
+
+Route::get('/blog/lifestyle', function () {
+    return view('pages.blog.lifestyle');
+});
+
+
+Route::get('/blog/lifestyle/details', function () {
+    return view('pages.blog.lifestyle-details');
+});
+
 
 
 
