@@ -1,6 +1,7 @@
 <x-guest-layout>
-    <div class="pt-24 mx-auto max-w-7xl sm:px-6 lg:px-8">
+    <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
         
+        <x-layouts.additional-navigation/>
 
         <x-home.carousel/>
 
