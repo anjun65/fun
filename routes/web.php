@@ -45,6 +45,10 @@ Route::get('/blog/wastra-nusantara', function () {
     return view('pages.blog.wastra-nusantara');
 });
 
+Route::get('/blog/wastra-nusantara/details', function () {
+    return view('pages.blog.wastra-details');
+});
+
 
 
 #Profile Brand
