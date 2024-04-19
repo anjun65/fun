@@ -7,9 +7,13 @@
 
         <x-home.new-product/>
         
-        <x-home.hall/>
+        
 
         <x-home.cta/>
+
+        <x-home.category/>
+
+        <x-home.hall/>
     </div>
     <x-home.perks/>
 </x-guest-layout>
