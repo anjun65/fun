@@ -51,6 +51,18 @@
                 <x-label for="password_confirmation" value="{{ __('Konfirmasi Kata Sandi') }}" />
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
+            
+            <div class="mt-4">
+                <x-label for="terms">
+                    <div class="flex items-center">
+                        <x-checkbox name="terms" id="terms" required />
+
+                        <div class="ml-2">
+                            Saya setuju untuk menerima informasi dan penawaran komersial dari althafunnisa
+                        </div>
+                    </div>
+                </x-label>
+            </div>
 
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
@@ -69,14 +81,10 @@
                 </div>
             @endif
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
+            <div class="flex items-center justify-center mt-4">
+                <button type="submit" class="text-center w-full items-center text-white px-4 py-2 bg-amber-400 border border-amber-400 rounded-md font-semibold text-xs uppercase tracking-widest font-bold focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+                    Daftar
+                </button>
             </div>
 
             <p class="text-center text-xs mt-4">Sudah memiliki Akun? <a class="text-indigo-400" href="{{ route('login') }}">Masuk</a></p>
