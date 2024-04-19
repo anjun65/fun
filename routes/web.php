@@ -37,6 +37,9 @@ Route::get('/lifestyle/details', function () {
 });
 
 #Blog
+Route::get('/blog/moment', function () {
+    return view('pages.blog.moment');
+});
 
 Route::get('/blog/wastra-nusantara', function () {
     return view('pages.blog.wastra-nusantara');
