@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CorporateController;
 use App\Http\Controllers\CycleController;
 use App\Http\Controllers\FounderController;
 use App\Http\Controllers\HallController;
@@ -104,15 +105,16 @@ Route::get('/gallery/marketing-activity/{id}', [MarketingController::class, 'sho
 Route::get('/gallery/hall-of-fame', [HallController::class, 'index'])->name('hall-of-fame');
 Route::get('/gallery/hall-of-fame/{id}', [HallController::class, 'show'])->name('hall-of-fame-details');
 
+Route::get('/gallery/corporate-responsibility', [CorporateController::class, 'index'])->name('responsibility');
+Route::get('/gallery/corporate-responsibility/{id}', [CorporateController::class, 'show'])->name('responsibility-details');
 
+// Route::get('/gallery/corporate-responsibility', function () {
+//     return view('pages.gallery.corporate-responsibility');
+// });
 
-Route::get('/gallery/corporate-responsibility', function () {
-    return view('pages.gallery.corporate-responsibility');
-});
-
-Route::get('/gallery/corporate-responsibility/details', function () {
-    return view('pages.gallery.corporate-details');
-});
+// Route::get('/gallery/corporate-responsibility/details', function () {
+//     return view('pages.gallery.corporate-details');
+// });
 
 
 
