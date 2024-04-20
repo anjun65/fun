@@ -8,32 +8,30 @@ use App\Http\Livewire\DataTable\WithSorting;
 use App\Http\Livewire\DataTable\WithCachedRows;
 use App\Http\Livewire\DataTable\WithBulkActions;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
-use App\Models\Portofolio;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\SubCategory;
 use Illuminate\Support\Carbon;
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Storage;
 
 class Seriess extends Component
 {
     use WithPerPagePagination, WithSorting, WithBulkActions, WithCachedRows;
     use WithFileUploads;
 
-    public $showSeriesEditModal = false;
-    public $showSeriesDeleteModal = false;
+    public $showEditModal = false;
+    public $showDeleteModal = false;
+    public $showDeleteFileModal = false;
     public $showFilters = false;
+    public $file_id;
+    public $upload = [];
     public $filters = [
-        'first_name' => '',
-        'status_queue' => true,
-        'status_process' => true,
-        'status_done' => true,
         'min_tanggal' => null,
         'max_tanggal' => null,
     ];
 
 
-    public Portofolio $editing;
-
-    public $upload;
+    public Product $editing;
 
     protected $queryString = ['sorts'];
 
@@ -43,9 +41,17 @@ class Seriess extends Component
     public function rules()
     {
         return [
-            'editing.title' => 'required',
-            'editing.description' => 'required',
-            'upload' => 'required|image|',
+            'name' => 'required',
+            'sistem' => 'required',
+            'link' => 'nullable',
+            'warna' => 'required',
+            'kategori_id' => 'required',
+            'sub_kategori_id' => 'required',
+            'stok' => 'required',
+            'harga' => 'required',
+            'harga_promo' => 'required',
+            'deskripsi' => 'required',
+            'upload.*' => 'required',
         ];
     }
 
@@ -60,7 +66,7 @@ class Seriess extends Component
 
     public function makeBlankTransaction()
     {
-        return Portofolio::make();
+        return Product::make();
     }
 
     public function toggleShowFilters()
@@ -79,7 +85,7 @@ class Seriess extends Component
         $this->showEditModal = true;
     }
 
-    public function edit(Portofolio $transaction)
+    public function edit(Product $transaction)
     {
 
         $this->useCachedRows();
@@ -105,10 +111,6 @@ class Seriess extends Component
 
         $this->validate();
 
-        $this->editing->fill([
-            'image' => Storage::disk('public')->put('assets/image', $this->upload),
-        ]);
-
         $this->editing->save();
 
         $this->notify('Data saved successfully.');
@@ -124,12 +126,9 @@ class Seriess extends Component
     public function getRowsQueryProperty()
     {
 
-        $query = Portofolio::query()
+        $query = Product::query()
             ->when($this->filters['min_tanggal'], fn ($query, $min_tanggal) => $query->where('created_at', '>=', Carbon::parse($min_tanggal)))
-            ->when($this->filters['max_tanggal'], fn ($query, $max_tanggal) => $query->where('created_at', '<=', Carbon::parse($max_tanggal)))
-            ->when($this->filters['status_queue'] == false, fn ($query) => $query->where('status', '!=', 'Queue'))
-            ->when($this->filters['status_process'] == false, fn ($query) => $query->where('status', '!=', 'Process'))
-            ->when($this->filters['status_done'] == false, fn ($query) => $query->where('status', '!=', 'Done'));
+            ->when($this->filters['max_tanggal'], fn ($query, $max_tanggal) => $query->where('created_at', '<=', Carbon::parse($max_tanggal)));
 
         return $this->applySorting($query);
     }
@@ -143,8 +142,13 @@ class Seriess extends Component
 
     public function render()
     {
+        $categories = Category::all();
+        $subcategories = SubCategory::all();
+
         return view('livewire.admin.seriess', [
             'items' => $this->rows,
+            'categories' => $categories,
+            'subcategories' => $subcategories,
         ]);
     }
 }

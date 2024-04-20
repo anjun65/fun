@@ -2,58 +2,16 @@
     <div class="py-4 space-y-4">
         <!-- Top Bar -->
         <div class="items-center justify-between lg:flex">
-        <div class="mb-4 lg:mb-0">
-            <h3 class="mb-2 text-xl font-bold text-gray-900">Series</h3>
+        <div class=" lg:mb-0">
+            <h3 class="text-2xl font-bold text-gray-900">Series</h3>
         </div>
         
         <div class="items-center sm:flex">
             <div class="flex items-center">
-                <button id="dropdownDefault" data-dropdown-toggle="dropdown"
-                    class="mb-4 sm:mb-0 mr-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5"
-                    type="button">
-                    Filter by status
-                    <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                    </svg>
-                </button>
-                
-                <!-- Dropdown menu -->
-                <div id="dropdown" class="z-10 hidden w-56 p-3 bg-white rounded-lg shadow">
-                    <h6 class="mb-3 text-sm font-medium text-gray-900">
-                        Status
-                    </h6>
-                    <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
-                        <li class="flex items-center">
-                            <input id="queue" type="checkbox" checked wire:model="filters.status_queue" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-slate-600 focus:ring-slate-500" />
-                            
-                            <label for="queue" class="ml-2 text-sm font-medium text-gray-900">
-                                Queue
-                            </label>
-                        </li>
-                    
-                        <li class="flex items-center">
-                            <input id="process" type="checkbox" checked wire:model="filters.status_process" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-slate-600 focus:ring-slate-500" />
-                            
-                            <label for="process" class="ml-2 text-sm font-medium text-gray-900">
-                                Process
-                            </label>
-                        </li>
-                    
-                        <li class="flex items-center">
-                            <input id="done" type="checkbox" checked wire:model="filters.status_done" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-slate-600 focus:ring-slate-500" />
-                            
-                            <label for="done" class="ml-2 text-sm font-medium text-gray-900">
-                                Done
-                            </label>
-                        </li>
-                    </ul>
-                </div>
-
                 <button id="dropdownDefault" data-dropdown-toggle="dropdown-bulk"
                     class="mb-4 sm:mb-0 mr-4 inline-flex items-center text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5"
                     type="button">
-                    Bulk Action
+                    Aksi
                     <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                         xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -62,7 +20,7 @@
 
                 <div id="dropdown-bulk" class="z-10 hidden w-56 p-3 bg-white rounded-lg shadow">
                     <h6 class="mb-3 text-sm font-medium text-gray-900">
-                        Bulk Action
+                        Aksi
                     </h6>
                     <ul class="space-y-2 text-sm" aria-labelledby="dropdownDefault">
 
@@ -73,11 +31,11 @@
                             </svg>
 
 
-                            <span>New</span>
+                            <span>Tambah</span>
                         </button>
 
                         <x-dropdown.item type="button" wire:click="$toggle('showDeleteModal')" class="flex items-center space-x-2">
-                            <x-icon.trash class="text-gray-700"/> <span>Delete</span>
+                            <x-icon.trash class="text-gray-700"/> <span>Hapus</span>
                         </x-dropdown.item>
                     </ul>
                 </div>
@@ -94,35 +52,6 @@
         </div>
     </div>
 
-        <!-- Advanced Search -->
-        <div>
-            @if ($showFilters)
-            <div class="bg-cool-gray-200 p-4 rounded shadow-inner flex relative">
-                <div class="w-1/2 pr-2 space-y-4">
-                    <x-input.group inline for="filter-status" label="Status">
-                        <x-input.select wire:model="filters.status" id="filter-status">
-                            <option value="" disabled>Select Status...</option>
-                        </x-input.select>
-                    </x-input.group>
-
-                    {{-- <x-input.group inline for="filter-date-min" label="Minimum Date">
-                        <x-datepicker wire:model="date-min"></x-datepicker>
-                    </x-input.group> --}}
-                </div>
-
-                <div class="w-1/2 pl-2 space-y-4">
-                    
-
-                    {{-- <x-input.group inline for="filter-date-max" label="Maximum Date">
-                        <x-datepicker wire:model="filters.date-max"></x-datepicker>
-                    </x-input.group> --}}
-
-                    <x-button.link wire:click="resetFilters" class="absolute right-0 bottom-0 p-4">Reset Filters</x-button.link>
-                </div>
-            </div>
-            @endif
-        </div>
-
         <!-- Products Table -->
         <div class="flex-col space-y-4 py-4">
             <x-table>
@@ -130,9 +59,22 @@
                     <x-table.heading class="pr-0 w-8">
                         <x-input.checkbox wire:model="selectPage" />
                     </x-table.heading>
-                    <x-table.heading sortable multi-column wire:click="sortBy('title')" :direction="$sorts['title'] ?? null">Title</x-table.heading>
-                    <x-table.heading sortable multi-column wire:click="sortBy('description')" :direction="$sorts['description'] ?? null">Description</x-table.heading>
-                    <x-table.heading sortable multi-column>Image</x-table.heading>
+                    
+                    <x-table.heading>Gambar</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('name')" :direction="$sorts['name'] ?? null">Nama</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('sistem')" :direction="$sorts['sistem'] ?? null">Sistem</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('kategori_id')" :direction="$sorts['kategori_id'] ?? null">Kategori</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('sub_kategori_id')" :direction="$sorts['sub_kategori_id'] ?? null">Sub Kategori</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('harga')" :direction="$sorts['harga'] ?? null">Harga</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('harga_promo')" :direction="$sorts['harga_promo'] ?? null">Harga Promo</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('stok')" :direction="$sorts['stok'] ?? null">Jumlah Stok</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('stok')" :direction="$sorts['stok'] ?? null">Terjual</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('stok')" :direction="$sorts['stok'] ?? null">Batal</x-table.heading>
+                    <x-table.heading sortable multi-column wire:click="sortBy('stok')" :direction="$sorts['stok'] ?? null">Pemasuka</x-table.heading>
+                    
+
+                    <x-table.heading />
+                    
                     <x-table.heading />
                 </x-slot>
 
@@ -160,16 +102,15 @@
 
 
                         <x-table.cell >
-                            {{ $item->title }}
+                            {{ $item->cta }}
                         </x-table.cell>
 
-
-                        <x-table.cell>
+                        <x-table.cell >
                             {{ $item->description }}
                         </x-table.cell>
-
-                        <x-table.cell>
-                            <img src="{{ Storage::url($item->image) }}" class="w-auto h-20">
+                        
+                        <x-table.cell >
+                            {{ $item->link }}
                         </x-table.cell>
 
                         <x-table.cell>
@@ -197,7 +138,7 @@
 
     <!-- Delete Transactions Modal -->
     <form wire:submit.prevent="deleteSelected">
-        <x-modal.confirmation wire:model.defer="showSeriesDeleteModal">
+        <x-modal.confirmation wire:model.defer="showDeleteModal">
             <x-slot name="title">Delete</x-slot>
 
             <x-slot name="content">
@@ -210,7 +151,7 @@
                         Cancel
                     </button>
 
-                    <button type="submit" class="w-full justify-center text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button type="submit" class="w-full justify-center text-white bg-amber-400 hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Save
                     </button>
                 </div>  
@@ -220,23 +161,80 @@
 
     <!-- Save Product Modal -->
     <form wire:submit.prevent="save">
-        <x-modal.dialog wire:model.defer="showSeriesEditModal">
-            <x-slot name="title">Portofolio</x-slot>
+        <x-modal.dialog wire:model.defer="showEditModal">
+            <x-slot name="title">Tambah Series</x-slot>
 
             <x-slot name="content">
                 <div class="grid grid-cols-6 gap-6 py-4">
-                        <div class="col-span-6">
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Title</label>
-                            <input type="title" name="title" wire:model="editing.title" id="title" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Insert Title" required="">
+                        <div class="col-span-3">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
+                            <input type="text" name="name" wire:model.lazy="editing.name" id="name" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Fill the text" required>
+                        </div>
+
+                        <div class="col-span-3">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Jumlah Stok</label>
+                            <input type="text" name="name" wire:model.lazy="editing.stok" id="name" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Fill the text" required>
+                        </div>
+
+                        <div class="col-span-3">
+                            <label for="sistem" class="block text-sm font-medium text-gray-700">Sistem</label>
+                            <select id="sistem" name="sistem" wire:model.lazy="editing.sistem" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                              <option value="" selected>Pilih Sistem</option>
+                              <option value="PO">PO</option>
+                              <option value="Ready Stok">Ready Stok</option>
+                            </select>
+                        </div>
+
+                        <div class="col-span-3">
+                            <label for="link" class="block text-sm font-medium text-gray-700">Link to Shoppe</label>
+                            <input type="text" name="link" wire:model.lazy="editing.link" id="link" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Fill the text" required>
+                        
+                        </div>
+
+                        <div class="col-span-3">
+                            <label for="harga" class="block text-sm font-medium text-gray-700">Harga</label>
+                            <input type="text" name="harga" wire:model.lazy="editing.harga" id="harga" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Fill the text" required>
+                        
+                        </div>
+
+                        <div class="col-span-3">
+                            <label for="warna" class="block text-sm font-medium text-gray-700">Warna</label>
+                            <input type="text" name="warna" wire:model.lazy="editing.warna" id="warna" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Fill the text" required>
+                        </div>
+
+                        <div class="col-span-3">
+                            <label for="harga_promo" class="block text-sm font-medium text-gray-700">Harga Promo</label>
+                            <input type="text" name="harga_promo" wire:model.lazy="editing.harga_promo" id="harga_promo" class="block p-2.5 w-full border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Fill the text" required>
+                        
+                        </div>
+
+                        <div class="col-span-3">
+                            <label for="kategori_id" class="block text-sm font-medium text-gray-700">Kategori</label>
+                            <select id="kategori_id" name="kategori_id" wire:model.lazy="editing.kategori_id" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                              <option value="" selected>Pilih Kategori</option>
+                              @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                              @endforeach
+                            </select>
+                        </div>
+
+                        <div class="col-span-3 row-span-2">
+                            <label class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
+                            <textarea rows="4" wire:model="editing.description" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-slate-500 focus:border-slate-500" placeholder="Fill the text">{{ $editing->description }}</textarea>
+                        </div>
+                        
+                        <div class="col-span-3">
+                            <label for="sub_kategori_id" class="block text-sm font-medium text-gray-700">Sub Kategori</label>
+                            <select id="sub_kategori_id" name="sub_kategori_id" wire:model.lazy="editing.sub_kategori_id" class="mt-1 block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
+                              <option value="" selected>Pilih Sub Kategori</option>
+                              @foreach ($subcategories as $subcategory)
+                                <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                              @endforeach
+                            </select>
                         </div>
 
                         <div class="col-span-6">
-                            <label class="block mb-2 text-sm font-medium text-gray-900">Description</label>
-                            <textarea rows="4" wire:model="editing.description" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-slate-500 focus:border-slate-500" placeholder="Insert Description">{{ $editing->description }}</textarea>
-                        </div>
-
-                        <div class="col-span-6">
-                            <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Image</label>
+                            <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Upload Gambar</label>
                             <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                               <div class="text-center">
                                 <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -245,7 +243,7 @@
                                 <div class="mt-4 flex text-sm leading-6 text-gray-600">
                                   <label for="file-upload" class="w-full relative cursor-pointer rounded-md bg-white font-semibold text-slate-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-slate-600 focus-within:ring-offset-2 hover:text-slate-500">
                                     <span>Upload a file</span>
-                                    <input id="file-upload" wire:model="upload" name="file-upload" type="file" class="sr-only">
+                                    <input id="file-upload" wire:model="upload" name="file-upload" multiple="multiple" type="file" class="sr-only">
 
                                     @error('upload') <span class="error text-red-600">{{ $message }}</span> @enderror
                                   </label>
@@ -261,7 +259,9 @@
                                 <p class="text-xs leading-5 text-gray-600">
                                     
                                     @if ($upload)
-                                        {{ $upload->getClientOriginalName() }}
+                                        @foreach ($upload as $photo)
+                                            {{ $photo->getClientOriginalName() }}<br/>
+                                        @endforeach
                                     @else
                                         PNG, JPG, GIF up to 10MB
                                     @endif
@@ -269,17 +269,18 @@
                               </div>
                             </div>
                         </div>
+
                     </div>
             </x-slot>
 
             <x-slot name="footer">
                 <div class="flex justify-center w-full pb-4 mt-4 space-x-4">
-                    <button type="button" wire:click="$set('showEditModal', false)" class="w-full justify-center text-gray-600 inline-flex items-center hover:text-gray-600 hover:bg-gray-50 border border-gray-300 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                    <button type="button" wire:click="$set('showEditModal', false)" class="w-full justify-center text-amber-400 inline-flex items-center hover:text-amber-600 hover:bg-amber-50 border border-gray-300 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                         Cancel
                     </button>
 
-                    <button type="submit" class="w-full justify-center text-white bg-slate-700 hover:bg-slate-800 focus:ring-4 focus:outline-none focus:ring-slate-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                        Save
+                    <button type="submit" class="w-full justify-center text-white bg-amber-300 hover:bg-amber-400 focus:ring-4 focus:outline-none focus:ring-amber-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                        Submit
                     </button>
                 </div>                
             </x-slot>

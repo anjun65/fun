@@ -170,6 +170,10 @@ Route::middleware([
 
 
     #belum perlu rombak db
+    Route::get('/admin/banner', function () {
+        return view('pages.admin.banner');
+    })->name('admin-banner');
+
     Route::get('/admin/series', function () {
         return view('pages.admin.series');
     })->name('admin-series');

@@ -1,3 +1,3 @@
 <x-dashboard-layout>
-    @livewire('admin.seriess')
+    @livewire('admin.banners')
 </x-dashboard-layout>
