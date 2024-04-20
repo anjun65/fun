@@ -10,7 +10,7 @@
         <div class="px-6 pt-16 pb-20 lg:px-8 lg:pt-24 lg:pb-28">
           <div class="relative mx-auto max-w-lg divide-y-2 divide-gray-200 lg:max-w-7xl">
             
-            <img class="h-auto max-w-full mx-auto" src="{{ asset('temp/alta.png') }}" alt="image description">
+            <img class="h-auto max-w-full mx-auto" src="{{ Storage::url($cycle->photo) }}">
 
           </div>
         </div>

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\CycleController;
 use App\Http\Controllers\FounderController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PortofolioController;
@@ -69,10 +70,13 @@ Route::get('/visi-misi', function () {
     return view('pages.brand.visi-misi');
 });
 
-// Route::get('/our-founder', function () {
-//     return view('pages.brand.founder');
-// });
 
+Route::get('/cycle', function () {
+    return view('pages.brand.cycle');
+});
+
+
+Route::get('/cycle', [CycleController::class, 'index'])->name('cycle');
 
 Route::get('/our-founder', [FounderController::class, 'index'])->name('founder');
 
@@ -83,9 +87,6 @@ Route::get('/road-map', function () {
     return view('pages.brand.road-map');
 });
 
-Route::get('/cycle', function () {
-    return view('pages.brand.cycle');
-});
 
 
 Route::get('/media-coverage', [MediaController::class, 'index'])->name('media');
