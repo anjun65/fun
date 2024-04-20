@@ -256,7 +256,7 @@ Route::middleware([
     #belum
 
     Route::get('/admin/media-coverage', function () {
-        return view('pages.admin.media-coverage');
+        return view('pages.admin.media');
     })->name('admin-media-coverage');
 
 
