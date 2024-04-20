@@ -6,6 +6,7 @@ use App\Http\Controllers\CycleController;
 use App\Http\Controllers\FounderController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\RoadMapController;
 use App\Http\Controllers\StrukturController;
 
 /*
@@ -71,21 +72,16 @@ Route::get('/visi-misi', function () {
 });
 
 
-Route::get('/cycle', function () {
-    return view('pages.brand.cycle');
-});
 
+
+
+Route::get('/road-map', [RoadMapController::class, 'index'])->name('road-map');
 
 Route::get('/cycle', [CycleController::class, 'index'])->name('cycle');
 
 Route::get('/our-founder', [FounderController::class, 'index'])->name('founder');
 
 Route::get('/struktur-organisasi', [StrukturController::class, 'index'])->name('struktur');
-
-
-Route::get('/road-map', function () {
-    return view('pages.brand.road-map');
-});
 
 
 
