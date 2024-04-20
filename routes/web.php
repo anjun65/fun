@@ -6,6 +6,7 @@ use App\Http\Controllers\CycleController;
 use App\Http\Controllers\FounderController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\RoadMapController;
 use App\Http\Controllers\StrukturController;
 use App\Http\Controllers\VisiMisiController;
@@ -64,16 +65,16 @@ Route::get('/our-journey', function () {
     return view('pages.brand.journey');
 });
 
+
+
+
+
 Route::get('/reseller', function () {
     return view('pages.brand.reseller');
 });
 
-// Route::get('/visi-misi', function () {
-//     return view('pages.brand.visi-misi');
-// });
 
-
-
+Route::get('/reseller', [ResellerController::class, 'index'])->name('visi-misi');
 
 Route::get('/visi-misi', [VisiMisiController::class, 'index'])->name('visi-misi');
 
@@ -252,6 +253,9 @@ Route::middleware([
     })->name('admin-kontak');
 
 
+    Route::get('/admin/reseller', function () {
+        return view('pages.admin.reseller');
+    })->name('admin-reseller');
 
 
     #belum
@@ -265,8 +269,4 @@ Route::middleware([
     Route::get('/admin/lifestyle', function () {
         return view('pages.admin.lifestyle');
     })->name('admin-lifestyle');
-
-    Route::get('/admin/reseller', function () {
-        return view('pages.admin.reseller');
-    })->name('admin-reseller');
 });

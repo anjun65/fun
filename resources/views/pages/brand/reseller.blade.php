@@ -14,8 +14,6 @@
         </div>
 
         <div class="grid grid-cols-1 w-full mt-10">
-            
-
             <div id="default-carousel" class="relative w-full" data-carousel="slide">
                 <!-- Carousel wrapper -->
                 <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
