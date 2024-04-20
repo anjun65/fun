@@ -18,7 +18,7 @@
                             Nama lengkap 
                         </div>
                         <div class="w-full font-base col-span-2">
-                            : Karina Pramythasari HAKW, S.H., M.Kn.
+                            : {{ $founder->nama }}
                         </div>
                     </div>
 
@@ -27,7 +27,7 @@
                             Tempat Tgl Lahir 
                         </div>
                         <div class="w-full font-base col-span-2">
-                            : Tg Uban (Kep.Riau) 20 Juli 1987
+                            : {{ $founder->tempat }} {{ $founder->tanggal_lahir }}
                         </div>
                     </div>
 
@@ -36,27 +36,43 @@
                             Pendidikan terakhir
                         </div>
                         <div class="w-full font-base col-span-2">
-                            : S2 Magister Kenotariatan Universitas Indonesia
+                            : {{ $founder->pendidikan }}
                         </div>
                     </div>
                 </div>
 
                 <p class="mx-auto mt-4 max-w-xl font-bold text-base text-gray-900">Profesi sekarang:</p>
                 <p class="mx-auto max-w-xl font-base text-base text-gray-900">
-                    1. Notaris / PPAT <br/>
-                    2. Pengusaha<br/>
-                    3. Fashion Designer<br/>
-                    4. Owner Brand Althafunissa Syari<br/>
+                    @php
+                        $profesis = explode(',', $founder->profesi);
+                        $i= 1;
+                    @endphp
+                    
+                    @foreach ($profesis as $profesi)
+                        {{ $i }}. {{ $profesi }} <br/>
+                        
+
+                        @php
+                            $i++;
+                        @endphp
+                    @endforeach
                 </p>
 
                 <p class="mx-auto mt-4 max-w-xl font-bold text-base text-gray-900">Jabatan Organisasi yg aktif saat ini:</p>
                 <p class="mx-auto max-w-xl mb-4 font-base text-base text-gray-900">
-                    1. Ketua Hijabersmom Community Batam <br/>
-                    2. Anggota IWAPI Batam<br/>
-                    3. Anggota Syari Community Indonesia<br/>
-                    4. Designer dan Pengurus Dekranasda Batam<br/>
-                    5. Anggota Bogor Fashion Community<br/>
-                    6. Anggota Indonesian Fashion Chamber (IFC) Jakarta<br/>
+                    @php
+                        $jabatans = explode(',', $founder->jabatan);
+                        $i= 1;
+                    @endphp
+                    
+                    @foreach ($jabatans as $jabatan)
+                        {{ $i }}. {{ $jabatan }} <br/>
+                        
+
+                        @php
+                            $i++;
+                        @endphp
+                    @endforeach
                 </p>
             </div>
         </section>

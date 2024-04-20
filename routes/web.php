@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FounderController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\StrukturController;
@@ -68,11 +69,12 @@ Route::get('/visi-misi', function () {
     return view('pages.brand.visi-misi');
 });
 
-Route::get('/our-founder', function () {
-    return view('pages.brand.founder');
-});
+// Route::get('/our-founder', function () {
+//     return view('pages.brand.founder');
+// });
 
 
+Route::get('/our-founder', [FounderController::class, 'index'])->name('founder');
 
 Route::get('/struktur-organisasi', [StrukturController::class, 'index'])->name('struktur');
 
