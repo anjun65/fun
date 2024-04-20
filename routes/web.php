@@ -13,6 +13,7 @@ use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ResellerController;
 use App\Http\Controllers\RoadMapController;
 use App\Http\Controllers\StrukturController;
+use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\VisiMisiController;
 
 /*
@@ -108,21 +109,12 @@ Route::get('/gallery/hall-of-fame/{id}', [HallController::class, 'show'])->name(
 Route::get('/gallery/corporate-responsibility', [CorporateController::class, 'index'])->name('responsibility');
 Route::get('/gallery/corporate-responsibility/{id}', [CorporateController::class, 'show'])->name('responsibility-details');
 
-// Route::get('/gallery/corporate-responsibility', function () {
-//     return view('pages.gallery.corporate-responsibility');
-// });
-
-// Route::get('/gallery/corporate-responsibility/details', function () {
-//     return view('pages.gallery.corporate-details');
-// });
+Route::get('/gallery/testimoni', [CorporateController::class, 'index'])->name('responsibility');
 
 
 
+Route::get('/gallery/testimoni', [TestimoniController::class, 'index'])->name('testimoni');
 
-
-Route::get('/gallery/testimoni', function () {
-    return view('pages.gallery.testimoni');
-});
 
 #Informasi
 Route::get('/faq', function () {
