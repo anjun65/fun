@@ -5,6 +5,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CycleController;
 use App\Http\Controllers\FounderController;
 use App\Http\Controllers\JourneyController;
+use App\Http\Controllers\MarketingController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ResellerController;
@@ -94,13 +95,17 @@ Route::get('/media-coverage/{id}', [MediaController::class, 'show'])->name('medi
 
 #gallery
 
-Route::get('/gallery/marketing-activity', function () {
-    return view('pages.gallery.marketing-activity');
-});
 
-Route::get('/gallery/marketing-activity/details', function () {
-    return view('pages.gallery.marketing-details');
-});
+Route::get('/gallery/marketing-activity', [MarketingController::class, 'index'])->name('marketing');
+Route::get('/gallery/marketing-activity/{id}', [MarketingController::class, 'show'])->name('marketing-details');
+
+// Route::get('/gallery/marketing-activity/{id}', function () {
+//     return view('pages.gallery.marketing-activity');
+// });
+
+// Route::get('/gallery/marketing-activity/details', function () {
+//     return view('pages.gallery.marketing-details');
+// });
 
 
 

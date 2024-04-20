@@ -13,62 +13,18 @@
             <div class="mx-auto max-w-7xl py-12 px-6 lg:px-8 lg:py-24">
               <div class="space-y-12">
                 <ul role="list" class="space-y-12 sm:grid sm:grid-cols-3 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-4 lg:gap-x-8">
-                  <li class="p-4 border-2 border-amber-400 rounded-md">
-                    <a href="#" class="space-y-4">
-                      <div class="aspect-w-3 aspect-h-2">
-                        <img class="rounded-md object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li class="p-4 border-2 border-amber-400 rounded-md">
-                    <a href="#" class="space-y-4">
-                      <div class="aspect-w-3 aspect-h-2">
-                        <img class="rounded-md object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li class="p-4 border-2 border-amber-400 rounded-md">
-                    <a href="#" class="space-y-4">
-                      <div class="aspect-w-3 aspect-h-2">
-                        <img class="rounded-md object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li class="p-4 border-2 border-amber-400 rounded-md">
-                    <a href="#" class="space-y-4">
-                      <div class="aspect-w-3 aspect-h-2">
-                        <img class="rounded-md object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li class="p-4 border-2 border-amber-400 rounded-md">
-                    <a href="#" class="space-y-4">
-                      <div class="aspect-w-3 aspect-h-2">
-                        <img class="rounded-md object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li class="p-4 border-2 border-amber-400 rounded-md">
-                    <a href="#" class="space-y-4">
-                      <div class="aspect-w-3 aspect-h-2">
-                        <img class="rounded-md object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li class="p-4 border-2 border-amber-400 rounded-md">
-                    <a href="#" class="space-y-4">
-                      <div class="aspect-w-3 aspect-h-2">
-                        <img class="rounded-md object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                      </div>
-                    </a>
-                  </li>
-                  <li class="p-4 border-2 border-amber-400 rounded-md">
-                    <a href="#" class="space-y-4">
-                      <div class="aspect-w-3 aspect-h-2">
-                        <img class="rounded-md object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                      </div>
-                    </a>
-                  </li>
+                  @forelse ($marketings as $marketing)
+                    <li class="p-4 border-2 border-amber-400 rounded-md">
+                      <a href="{{ route('marketing-details', $marketing->id) }}" class="space-y-4">
+                        <div class="aspect-w-3 aspect-h-2">
+                          <img class="rounded-md object-cover shadow-lg" src="{{ Storage::url($marketing->file->first()->photo) }}" alt="">
+                        </div>
+                      </a>
+                    </li>
+                  @empty
+                    Data not Found
+                  @endforelse
+                  
                 </ul>
               </div>
             </div>

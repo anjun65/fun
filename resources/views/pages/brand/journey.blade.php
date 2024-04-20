@@ -13,7 +13,7 @@
 
       <div class="space-y-20">
         @foreach ($journeys as $year => $journeyGroup)
-        <div class="grid grid-cols-4 gap-4 min-h-32 rounded-lg bg-gradient-to-r from-amber-400 to-white">
+        <div class="grid grid-cols-4 p-8 gap-4 min-h-32 rounded-lg bg-gradient-to-r from-amber-400 to-white">
           <div>
             <div class="h-12 w-12 flex justify-center border border-gray-900 items-center  rounded-full mr-4">
               <span class="text-gray-900 font-bold text-lg p-10">{{ $year }}</span>
