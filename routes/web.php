@@ -73,7 +73,7 @@ Route::get('/reseller', function () {
     return view('pages.brand.reseller');
 });
 
-
+#di juara belum
 Route::get('/reseller', [ResellerController::class, 'index'])->name('visi-misi');
 
 Route::get('/visi-misi', [VisiMisiController::class, 'index'])->name('visi-misi');

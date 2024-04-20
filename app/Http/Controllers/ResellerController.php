@@ -17,7 +17,7 @@ class ResellerController extends Controller
             ->groupBy('years')
             ->groupBy('provinsi')
             ->groupBy('kota');
-        $juaraImage = JuaraGallery::latest()->get();
+        $juaraImage = JuaraGallery::latest()->first();
 
         return view('pages.brand.reseller', [
             'juara' => $juaras,
