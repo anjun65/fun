@@ -8,6 +8,7 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\RoadMapController;
 use App\Http\Controllers\StrukturController;
+use App\Http\Controllers\VisiMisiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,13 +68,14 @@ Route::get('/reseller', function () {
     return view('pages.brand.reseller');
 });
 
-Route::get('/visi-misi', function () {
-    return view('pages.brand.visi-misi');
-});
+// Route::get('/visi-misi', function () {
+//     return view('pages.brand.visi-misi');
+// });
 
 
 
 
+Route::get('/visi-misi', [VisiMisiController::class, 'index'])->name('visi-misi');
 
 Route::get('/road-map', [RoadMapController::class, 'index'])->name('road-map');
 
