@@ -10,25 +10,25 @@
     </div>
 
     <section aria-labelledby="recent-heading" class="mt-16">
-      <h2 id="recent-heading" class="sr-only">Recent orders</h2>
 
       <div class="space-y-20">
-        <div><div class="rounded-lg bg-gradient-to-r from-amber-400 to-white py-6 px-4 sm:flex sm:items-center sm:justify-between sm:space-x-6 sm:px-6 lg:space-x-8">
-            <dl class="flex-auto space-y-6 divide-y divide-gray-200 text-sm text-gray-600 grid sm:grid-cols-3 sm:gap-x-6 sm:space-y-0 sm:divide-y-0 lg:w-1/2 lg:flex-none lg:gap-x-8">
-              <div class="flex justify-between sm:block">
-                <div class="h-12 w-12 flex justify-center border border-gray-900 items-center  rounded-full mr-4">
-                  <span class="text-gray-900 font-bold text-lg p-10">2024</span>
-                </div>
-              </div>
-              <div class="flex justify-between pt-6 sm:block sm:pt-0">
-                <dt class="font-medium text-gray-900">Lahirnya Althafunissa syar'i by karina.</dt>
-                <dt class="font-medium text-gray-900">Fashion show Perdana Muffest (muslim fashion festival ).</dt>
-                <dt class="font-medium text-gray-900">Workshop pertama di Kota Batam dengan 5 karyawan.</dt>
-                
-              </div>
-            </dl>
+        @foreach ($journeys as $year => $journeyGroup)
+        <div class="grid grid-cols-4 gap-4 min-h-32 rounded-lg bg-gradient-to-r from-amber-400 to-white">
+          <div>
+            <div class="h-12 w-12 flex justify-center border border-gray-900 items-center  rounded-full mr-4">
+              <span class="text-gray-900 font-bold text-lg p-10">{{ $year }}</span>
+            </div>
+
+          </div>
+          <div class="col-span-3">
+            <div class="grid grid-cols-2">
+              @foreach ($journeyGroup as $journey)
+                <div>{{ $journey->description }}</div>
+              @endforeach
+            </div>
           </div>
         </div>
+        @endforeach
 
         <!-- More orders... -->
       </div>

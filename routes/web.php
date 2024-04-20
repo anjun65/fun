@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CycleController;
 use App\Http\Controllers\FounderController;
+use App\Http\Controllers\JourneyController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PortofolioController;
 use App\Http\Controllers\ResellerController;
@@ -65,16 +66,15 @@ Route::get('/our-journey', function () {
     return view('pages.brand.journey');
 });
 
+// Route::get('/reseller', function () {
+//     return view('pages.brand.reseller');
+// });
 
 
-
-
-Route::get('/reseller', function () {
-    return view('pages.brand.reseller');
-});
+Route::get('/our-journey', [JourneyController::class, 'index'])->name('journey');
 
 #di juara belum
-Route::get('/reseller', [ResellerController::class, 'index'])->name('visi-misi');
+Route::get('/reseller', [ResellerController::class, 'index'])->name('reseller');
 
 Route::get('/visi-misi', [VisiMisiController::class, 'index'])->name('visi-misi');
 
