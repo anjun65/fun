@@ -32,195 +32,77 @@
     
 
       <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
-        <div class="group relative flex flex-col overflow-hidden bg-white">
-          {{-- <div class="text-sm font-medium text-gray-900 absolute top-2 left-2 z-10 bg-amber-400 px-2 py-1 rounded-md">Preorder</div> --}}
+        @foreach ($blogs as $blog)
+          <div class="group relative flex flex-col overflow-hidden bg-white">
           <div class="w-11/12 absolute bottom-0 text-white left-3.5 z-10 flex flex-1 flex-col space-y-2 py-4">
             <h3 class="text-lg font-medium">
-                <a href="">
+                <a href="{{ route('hall-of-fame-details', $blog->id) }}">
                     <span aria-hidden="true" class="absolute inset-0"></span>
-                    Kunjungan Perumda
+                    {{ $blog->judul }}
                 </a>
             </h3>
-            <p class="text-sm">9 November 2023</p>
+            <p class="text-sm">{{ $blog->created_at->toDateString() }}</p>
             <p class="text-sm text-right">
-                <span class="font-medium text-gray-50">See Details</span>
+                <a href="{{ route('hall-of-fame-details', $blog->id) }}" class="font-medium text-gray-50">See Details</a>
             </p>
           </div>
           <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden group-hover:opacity-75">
-              <img src="{{ asset('temp/produk1.png') }}" class="rounded-lg h-full w-full object-cover object-center">
+              <img src="{{ Storage::url($blog->file->first()->photo) }}" class="rounded-lg h-full w-full object-cover object-center">
           </div>
           
-        </div>
-
-        <div class="group relative flex flex-col overflow-hidden bg-white">
-          {{-- <div class="text-sm font-medium text-gray-900 absolute top-2 left-2 z-10 bg-amber-400 px-2 py-1 rounded-md">Preorder</div> --}}
-          <div class="w-11/12 absolute bottom-0 text-white left-3.5 z-10 flex flex-1 flex-col space-y-2 py-4">
-            <h3 class="text-lg font-medium">
-                <a href="">
-                    <span aria-hidden="true" class="absolute inset-0"></span>
-                    Kunjungan Perumda
-                </a>
-            </h3>
-            <p class="text-sm">9 November 2023</p>
-            <p class="text-sm text-right">
-                <span class="font-medium text-gray-50">See Details</span>
-            </p>
-          </div>
-          <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden group-hover:opacity-75">
-              <img src="{{ asset('temp/produk1.png') }}" class="rounded-lg h-full w-full object-cover object-center">
-          </div>
-          
-        </div>
-
-        <div class="group relative flex flex-col overflow-hidden bg-white">
-          {{-- <div class="text-sm font-medium text-gray-900 absolute top-2 left-2 z-10 bg-amber-400 px-2 py-1 rounded-md">Preorder</div> --}}
-          <div class="w-11/12 absolute bottom-0 text-white left-3.5 z-10 flex flex-1 flex-col space-y-2 py-4">
-            <h3 class="text-lg font-medium">
-                <a href="">
-                    <span aria-hidden="true" class="absolute inset-0"></span>
-                    Kunjungan Perumda
-                </a>
-            </h3>
-            <p class="text-sm">9 November 2023</p>
-            <p class="text-sm text-right">
-                <span class="font-medium text-gray-50">See Details</span>
-            </p>
-          </div>
-          <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden group-hover:opacity-75">
-              <img src="{{ asset('temp/produk1.png') }}" class="rounded-lg h-full w-full object-cover object-center">
-          </div>
-          
-        </div>
+          </div> 
+        @endforeach
+        
         
       </div>
    
   </div>
   <div class="hidden p-4 rounded-lg bg-gray-50 " id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
     <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
-      <div class="group relative flex flex-col overflow-hidden bg-white">
-        {{-- <div class="text-sm font-medium text-gray-900 absolute top-2 left-2 z-10 bg-amber-400 px-2 py-1 rounded-md">Preorder</div> --}}
-        <div class="w-11/12 absolute bottom-0 text-white left-3.5 z-10 flex flex-1 flex-col space-y-2 py-4">
-          <h3 class="text-lg font-medium">
-              <a href="">
-                  <span aria-hidden="true" class="absolute inset-0"></span>
-                  Kunjungan Perumda
-              </a>
-          </h3>
-          <p class="text-sm">9 November 2023</p>
-          <p class="text-sm text-right">
-              <span class="font-medium text-gray-50">See Details</span>
-          </p>
-        </div>
-        <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden group-hover:opacity-75">
-            <img src="{{ asset('temp/produk1.png') }}" class="rounded-lg h-full w-full object-cover object-center">
-        </div>
-        
-      </div>
-
-      <div class="group relative flex flex-col overflow-hidden bg-white">
-        {{-- <div class="text-sm font-medium text-gray-900 absolute top-2 left-2 z-10 bg-amber-400 px-2 py-1 rounded-md">Preorder</div> --}}
-        <div class="w-11/12 absolute bottom-0 text-white left-3.5 z-10 flex flex-1 flex-col space-y-2 py-4">
-          <h3 class="text-lg font-medium">
-              <a href="">
-                  <span aria-hidden="true" class="absolute inset-0"></span>
-                  Kunjungan Perumda
-              </a>
-          </h3>
-          <p class="text-sm">9 November 2023</p>
-          <p class="text-sm text-right">
-              <span class="font-medium text-gray-50">See Details</span>
-          </p>
-        </div>
-        <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden group-hover:opacity-75">
-            <img src="{{ asset('temp/produk1.png') }}" class="rounded-lg h-full w-full object-cover object-center">
-        </div>
-        
-      </div>
-
-      <div class="group relative flex flex-col overflow-hidden bg-white">
-        {{-- <div class="text-sm font-medium text-gray-900 absolute top-2 left-2 z-10 bg-amber-400 px-2 py-1 rounded-md">Preorder</div> --}}
-        <div class="w-11/12 absolute bottom-0 text-white left-3.5 z-10 flex flex-1 flex-col space-y-2 py-4">
-          <h3 class="text-lg font-medium">
-              <a href="">
-                  <span aria-hidden="true" class="absolute inset-0"></span>
-                  Kunjungan Perumda
-              </a>
-          </h3>
-          <p class="text-sm">9 November 2023</p>
-          <p class="text-sm text-right">
-              <span class="font-medium text-gray-50">See Details</span>
-          </p>
-        </div>
-        <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden group-hover:opacity-75">
-            <img src="{{ asset('temp/produk1.png') }}" class="rounded-lg h-full w-full object-cover object-center">
-        </div>
-        
-      </div>
-      
+    @foreach ($events as $event)
+          <div class="group relative flex flex-col overflow-hidden bg-white">
+          <div class="w-11/12 absolute bottom-0 text-white left-3.5 z-10 flex flex-1 flex-col space-y-2 py-4">
+            <h3 class="text-lg font-medium">
+                <a href="{{ route('hall-of-fame-details', $event->id) }}">
+                    <span aria-hidden="true" class="absolute inset-0"></span>
+                    {{ $event->judul }}
+                </a>
+            </h3>
+            <p class="text-sm">{{ $event->created_at->toDateString() }}</p>
+            <p class="text-sm text-right">
+                <a href="{{ route('hall-of-fame-details', $event->id) }}" class="font-medium text-gray-50">See Details</a>
+            </p>
+          </div>
+          <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden group-hover:opacity-75">
+              <img src="{{ Storage::url($event->file->first()->photo) }}" class="rounded-lg h-full w-full object-cover object-center">
+          </div>
+          
+          </div> 
+        @endforeach
     </div>
   </div>
   <div class="hidden p-4 rounded-lg bg-gray-50" id="settings" role="tabpanel" aria-labelledby="settings-tab">
     <div class="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:gap-x-8 xl:grid-cols-3">
-      <div class="group relative flex flex-col overflow-hidden bg-white">
-        {{-- <div class="text-sm font-medium text-gray-900 absolute top-2 left-2 z-10 bg-amber-400 px-2 py-1 rounded-md">Preorder</div> --}}
-        <div class="w-11/12 absolute bottom-0 text-white left-3.5 z-10 flex flex-1 flex-col space-y-2 py-4">
-          <h3 class="text-lg font-medium">
-              <a href="">
-                  <span aria-hidden="true" class="absolute inset-0"></span>
-                  Kunjungan Perumda
-              </a>
-          </h3>
-          <p class="text-sm">9 November 2023</p>
-          <p class="text-sm text-right">
-              <span class="font-medium text-gray-50">See Details</span>
-          </p>
-        </div>
-        <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden group-hover:opacity-75">
-            <img src="{{ asset('temp/produk1.png') }}" class="rounded-lg h-full w-full object-cover object-center">
-        </div>
-        
-      </div>
-
-      <div class="group relative flex flex-col overflow-hidden bg-white">
-        {{-- <div class="text-sm font-medium text-gray-900 absolute top-2 left-2 z-10 bg-amber-400 px-2 py-1 rounded-md">Preorder</div> --}}
-        <div class="w-11/12 absolute bottom-0 text-white left-3.5 z-10 flex flex-1 flex-col space-y-2 py-4">
-          <h3 class="text-lg font-medium">
-              <a href="">
-                  <span aria-hidden="true" class="absolute inset-0"></span>
-                  Kunjungan Perumda
-              </a>
-          </h3>
-          <p class="text-sm">9 November 2023</p>
-          <p class="text-sm text-right">
-              <span class="font-medium text-gray-50">See Details</span>
-          </p>
-        </div>
-        <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden group-hover:opacity-75">
-            <img src="{{ asset('temp/produk1.png') }}" class="rounded-lg h-full w-full object-cover object-center">
-        </div>
-        
-      </div>
-
-      <div class="group relative flex flex-col overflow-hidden bg-white">
-        {{-- <div class="text-sm font-medium text-gray-900 absolute top-2 left-2 z-10 bg-amber-400 px-2 py-1 rounded-md">Preorder</div> --}}
-        <div class="w-11/12 absolute bottom-0 text-white left-3.5 z-10 flex flex-1 flex-col space-y-2 py-4">
-          <h3 class="text-lg font-medium">
-              <a href="">
-                  <span aria-hidden="true" class="absolute inset-0"></span>
-                  Kunjungan Perumda
-              </a>
-          </h3>
-          <p class="text-sm">9 November 2023</p>
-          <p class="text-sm text-right">
-              <span class="font-medium text-gray-50">See Details</span>
-          </p>
-        </div>
-        <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden group-hover:opacity-75">
-            <img src="{{ asset('temp/produk1.png') }}" class="rounded-lg h-full w-full object-cover object-center">
-        </div>
-        
-      </div>
-      
+    @foreach ($collaborations as $collaboration)
+          <div class="group relative flex flex-col overflow-hidden bg-white">
+          <div class="w-11/12 absolute bottom-0 text-white left-3.5 z-10 flex flex-1 flex-col space-y-2 py-4">
+            <h3 class="text-lg font-medium">
+                <a href="{{ route('hall-of-fame-details', $collaboration->id) }}">
+                    <span aria-hidden="true" class="absolute inset-0"></span>
+                    {{ $collaboration->judul }}
+                </a>
+            </h3>
+            <p class="text-sm">{{ $collaboration->created_at->toDateString() }}</p>
+            <p class="text-sm text-right">
+                <a href="{{ route('hall-of-fame-details', $collaboration->id) }}" class="font-medium text-gray-50">See Details</a>
+            </p>
+          </div>
+          <div class="aspect-w-1 aspect-h-1 bg-gray-200 overflow-hidden group-hover:opacity-75">
+              <img src="{{ Storage::url($collaboration->file->first()->photo) }}" class="rounded-lg h-full w-full object-cover object-center">
+          </div>
+          
+          </div> 
+        @endforeach
     </div>
   </div>
 </div>

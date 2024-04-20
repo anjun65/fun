@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CycleController;
 use App\Http\Controllers\FounderController;
+use App\Http\Controllers\HallController;
 use App\Http\Controllers\JourneyController;
 use App\Http\Controllers\MarketingController;
 use App\Http\Controllers\MediaController;
@@ -99,24 +100,9 @@ Route::get('/media-coverage/{id}', [MediaController::class, 'show'])->name('medi
 Route::get('/gallery/marketing-activity', [MarketingController::class, 'index'])->name('marketing');
 Route::get('/gallery/marketing-activity/{id}', [MarketingController::class, 'show'])->name('marketing-details');
 
-// Route::get('/gallery/marketing-activity/{id}', function () {
-//     return view('pages.gallery.marketing-activity');
-// });
 
-// Route::get('/gallery/marketing-activity/details', function () {
-//     return view('pages.gallery.marketing-details');
-// });
-
-
-
-
-Route::get('/gallery/hall-of-fame', function () {
-    return view('pages.gallery.hall-of-fame');
-});
-
-Route::get('/gallery/hall-of-fame/details', function () {
-    return view('pages.gallery.hall-details');
-});
+Route::get('/gallery/hall-of-fame', [HallController::class, 'index'])->name('hall-of-fame');
+Route::get('/gallery/hall-of-fame/{id}', [HallController::class, 'show'])->name('hall-of-fame-details');
 
 
 

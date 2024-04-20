@@ -121,10 +121,6 @@ class Events extends Component
 
         $this->validate();
 
-        // $this->editing->fill([
-        //     'image' => Storage::disk('public')->put('assets/image', $this->upload),
-        // ]);
-
         $this->editing->save();
 
         foreach ($this->upload as $upload) {
