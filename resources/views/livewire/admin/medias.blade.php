@@ -1,3 +1,7 @@
+{{-- @push('')
+    
+@endpush --}}
+
 <div class="p-4 bg-white border border-gray-200 rounded-lg shadow-sm sm:p-6">
     <div class="py-4 space-y-4">
         <!-- Top Bar -->
@@ -195,7 +199,7 @@
 
                         <div class="col-span-6">
                             <label class="block mb-2 text-sm font-medium text-gray-900">Deskripsi</label>
-                            <textarea rows="4" wire:model.lazy="editing.description" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-slate-500 focus:border-slate-500" placeholder="Fill the text">{{ $editing->description }}</textarea>
+                            <textarea name="editor" id="editor" rows="4" wire:model.lazy="editing.description" class="block p-2.5 w-full text-sm text-gray-900 rounded-lg border border-gray-300 focus:ring-slate-500 focus:border-slate-500" placeholder="Fill the text">{{ $editing->description }}</textarea>
                         </div>
                     </div>
             </x-slot>

@@ -98,11 +98,12 @@ class Medias extends Component
 
     public function save()
     {
-        $this->validate();
+        // $this->validate();
 
         $this->editing->fill([
             'photo' => Storage::disk('public')->put('assets/image', $this->upload),
         ]);
+
 
         $this->editing->save();
 

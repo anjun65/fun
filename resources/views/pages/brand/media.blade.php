@@ -16,103 +16,27 @@
             <h2 class="text-2xl mt-20 font-bold tracking-tight border-l-4 border-amber-400" style="padding-left:1em">Berita</h2>
           </div>
           <ul role="list" class="space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8">
-            <li>
-              <div class="space-y-4">
-                <div class="aspect-w-3 aspect-h-2">
-                  <img class="rounded-lg object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                </div>
-    
-                <div class="space-y-2">
-                  <div class="space-y-1 text-lg font-medium leading-6 mb-10">
-                    <h3>Elegansi Berbusana Islami: Inspirasi Fashion Hijab Terkini untuk Wanita Modern</h3>
+            
+            @forelse ($medias as $media)
+              <li>
+                <a href="{{ route('media-details', $media->id) }}" class="space-y-4">
+                  <div class="aspect-w-3 aspect-h-2">
+                    <img class="rounded-lg object-cover shadow-lg" src="{{ Storage::url($media->photo) }}" alt="{{ $media->judul }}">
                   </div>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div class="space-y-4">
-                <div class="aspect-w-3 aspect-h-2">
-                  <img class="rounded-lg object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                </div>
-    
-                <div class="space-y-2">
-                  <div class="space-y-1 text-lg font-medium leading-6 mb-10">
-                    <h3>Elegansi Berbusana Islami: Inspirasi Fashion Hijab Terkini untuk Wanita Modern</h3>
+                
+                  <div class="space-y-2">
+                    <div class="space-y-1 text-lg font-medium leading-6 mb-10">
+                      <h3>{{ $media->judul }}</h3>
+                    </div>
                   </div>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div class="space-y-4">
-                <div class="aspect-w-3 aspect-h-2">
-                  <img class="rounded-lg object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                </div>
-    
-                <div class="space-y-2">
-                  <div class="space-y-1 text-lg font-medium leading-6 mb-10">
-                    <h3>Elegansi Berbusana Islami: Inspirasi Fashion Hijab Terkini untuk Wanita Modern</h3>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div class="space-y-4">
-                <div class="aspect-w-3 aspect-h-2">
-                  <img class="rounded-lg object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                </div>
-    
-                <div class="space-y-2">
-                  <div class="space-y-1 text-lg font-medium leading-6 mb-10">
-                    <h3>Elegansi Berbusana Islami: Inspirasi Fashion Hijab Terkini untuk Wanita Modern</h3>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div class="space-y-4">
-                <div class="aspect-w-3 aspect-h-2">
-                  <img class="rounded-lg object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                </div>
-    
-                <div class="space-y-2">
-                  <div class="space-y-1 text-lg font-medium leading-6 mb-10">
-                    <h3>Elegansi Berbusana Islami: Inspirasi Fashion Hijab Terkini untuk Wanita Modern</h3>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div class="space-y-4">
-                <div class="aspect-w-3 aspect-h-2">
-                  <img class="rounded-lg object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                </div>
-    
-                <div class="space-y-2">
-                  <div class="space-y-1 text-lg font-medium leading-6 mb-10">
-                    <h3>Elegansi Berbusana Islami: Inspirasi Fashion Hijab Terkini untuk Wanita Modern</h3>
-                  </div>
-                </div>
-              </div>
-            </li>
-
-            <li>
-              <div class="space-y-4">
-                <div class="aspect-w-3 aspect-h-2">
-                  <img class="rounded-lg object-cover shadow-lg" src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80" alt="">
-                </div>
-    
-                <div class="space-y-2">
-                  <div class="space-y-1 text-lg font-medium leading-6 mb-10">
-                    <h3>Elegansi Berbusana Islami: Inspirasi Fashion Hijab Terkini untuk Wanita Modern</h3>
-                  </div>
-                </div>
-              </div>
-            </li>
+                </a>
+              </li>
+            @empty
+              <li>
+                <div class="space-y-4">
+                  No Data Found
+              </li>
+            @endforelse
             
             
             <!-- More people... -->

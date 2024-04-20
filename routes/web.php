@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PortofolioController;
 
 /*
@@ -82,13 +83,14 @@ Route::get('/cycle', function () {
     return view('pages.brand.cycle');
 });
 
-Route::get('/media-coverage', function () {
-    return view('pages.brand.media');
-});
 
-Route::get('/media-coverage/details', function () {
-    return view('pages.brand.media-detail');
-});
+Route::get('/media-coverage', [MediaController::class, 'index'])->name('media');
+
+Route::get('/media-coverage/{id}', [MediaController::class, 'show'])->name('media-details');
+
+// Route::get('/media-coverage/details', function () {
+//     return view('pages.brand.media-detail');
+// });
 
 #gallery
 
