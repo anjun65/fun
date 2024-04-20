@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\PortofolioController;
+use App\Http\Controllers\StrukturController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,9 +72,10 @@ Route::get('/our-founder', function () {
     return view('pages.brand.founder');
 });
 
-Route::get('/struktur-organisasi', function () {
-    return view('pages.brand.organisasi');
-});
+
+
+Route::get('/struktur-organisasi', [StrukturController::class, 'index'])->name('struktur');
+
 
 Route::get('/road-map', function () {
     return view('pages.brand.road-map');
@@ -87,10 +89,6 @@ Route::get('/cycle', function () {
 Route::get('/media-coverage', [MediaController::class, 'index'])->name('media');
 
 Route::get('/media-coverage/{id}', [MediaController::class, 'show'])->name('media-details');
-
-// Route::get('/media-coverage/details', function () {
-//     return view('pages.brand.media-detail');
-// });
 
 #gallery
 

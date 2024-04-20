@@ -187,6 +187,7 @@
                               <option value="Direktur">Direktur</option>
                               <option value="GM">GM</option>
                               <option value="Corporate Secretary">Corporate Secretary</option>
+                              <option value="Produksi">Produksi</option>
                               <option value="Operasional">Operasional</option>
                               <option value="SDM/HRD">SDM/HRD</option>
                               <option value="R&D">R&D</option>

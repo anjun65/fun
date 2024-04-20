@@ -12,33 +12,36 @@
           <p class="mt-4 font-bold text-xl text-gray-900 uppercase">Komisaris</p>
 
           <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
-            <li>
-              <div class="flex items-center gap-x-6">
-                <img class="h-16 w-16 rounded-full" src="{{ asset('img/struktur.jpeg') }}" alt="">
-                <div>
-                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">M. Wahyu Hidayat </h3>
-                  <p class="text-sm font-semibold leading-6 text-gray-400">Komisaris Utama</p>
+            @foreach ( $komisariss as $komisaris )
+              <li>
+                <div class="flex items-center gap-x-6">
+                  <img class="h-16 w-16 rounded-full" src="{{ Storage::url($komisaris->photo) }}" alt="">
+                  <div>
+                    <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{ $komisaris->name }}</h3>
+                    <p class="text-sm font-semibold leading-6 text-gray-400">{{ $komisaris->jabatan }}</p>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
+            @endforeach
+            
             
           </ul>
         </div>
 
         <div class="border-b-2 pb-10 mt-10 mx-auto grid max-w-7xl gap-x-8 gap-y-8 px-6 lg:px-8 xl:grid-cols-2">
           <p class="mt-4 font-bold text-xl text-gray-900 uppercase">DIREKTUR</p>
-
           <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
-            <li>
-              <div class="flex items-center gap-x-6">
-                <img class="h-16 w-16 rounded-full" src="{{ asset('img/struktur.jpeg') }}" alt="">
-                <div>
-                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">M. Wahyu Hidayat </h3>
-                  <p class="text-sm font-semibold leading-6 text-gray-400">Direktur</p>
+            @foreach ( $direkturs as $direktur )
+              <li>
+                <div class="flex items-center gap-x-6">
+                  <img class="h-16 w-16 rounded-full" src="{{ Storage::url($direktur->photo) }}" alt="">
+                  <div>
+                    <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{ $direktur->name }}</h3>
+                    <p class="text-sm font-semibold leading-6 text-gray-400">{{ $direktur->jabatan }}</p>
+                  </div>
                 </div>
-              </div>
-            </li>
-            
+              </li>
+            @endforeach
           </ul>
         </div>
 
@@ -46,15 +49,17 @@
           <p class="mt-4 font-bold text-xl text-gray-900 uppercase">GM</p>
 
           <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
-            <li>
-              <div class="flex items-center gap-x-6">
-                <img class="h-16 w-16 rounded-full" src="{{ asset('img/struktur.jpeg') }}" alt="">
-                <div>
-                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">M. Wahyu Hidayat </h3>
-                  <p class="text-sm font-semibold leading-6 text-gray-400">GM</p>
+            @foreach ( $gms as $gm )
+              <li>
+                <div class="flex items-center gap-x-6">
+                  <img class="h-16 w-16 rounded-full" src="{{ Storage::url($gm->photo) }}" alt="">
+                  <div>
+                    <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{ $gm->name }}</h3>
+                    <p class="text-sm font-semibold leading-6 text-gray-400">{{ $gm->jabatan }}</p>
+                  </div>
                 </div>
-              </div>
-            </li>
+              </li>
+            @endforeach
             
           </ul>
         </div>
@@ -63,15 +68,17 @@
           <p class="mt-4 font-bold text-xl text-gray-900 uppercase">Corporate Secretary</p>
 
           <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+            @foreach ( $corporates as $corporate )
             <li>
               <div class="flex items-center gap-x-6">
-                <img class="h-16 w-16 rounded-full" src="{{ asset('img/struktur.jpeg') }}" alt="">
+                <img class="h-16 w-16 rounded-full" src="{{ Storage::url($corporate->photo) }}" alt="">
                 <div>
-                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">M. Wahyu Hidayat </h3>
-                  <p class="text-sm font-semibold leading-6 text-gray-400">Corporate Secretary</p>
+                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{ $corporate->name }}</h3>
+                  <p class="text-sm font-semibold leading-6 text-gray-400">{{ $corporate->jabatan }}</p>
                 </div>
               </div>
             </li>
+            @endforeach
             
           </ul>
         </div>
@@ -80,45 +87,113 @@
           <p class="mt-4 font-bold text-xl text-gray-900 uppercase">PRODUKSI</p>
 
           <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+            @foreach ( $produksis as $produksi )
             <li>
               <div class="flex items-center gap-x-6">
-                <img class="h-16 w-16 rounded-full" src="{{ asset('img/struktur.jpeg') }}" alt="">
+                <img class="h-16 w-16 rounded-full" src="{{ Storage::url($produksi->photo) }}" alt="">
                 <div>
-                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">M. Wahyu Hidayat </h3>
-                  <p class="text-sm font-semibold leading-6 text-gray-400">corporate secretary</p>
+                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{ $produksi->name }}</h3>
+                  <p class="text-sm font-semibold leading-6 text-gray-400">{{ $produksi->jabatan }}</p>
                 </div>
               </div>
             </li>
+            @endforeach
+            
+          </ul>
+        </div>
 
-            <li>
-              <div class="flex items-center gap-x-6">
-                <img class="h-16 w-16 rounded-full" src="{{ asset('img/struktur.jpeg') }}" alt="">
-                <div>
-                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">M. Wahyu Hidayat </h3>
-                  <p class="text-sm font-semibold leading-6 text-gray-400">QC</p>
-                </div>
-              </div>
-            </li>
+        <div class="border-b-2 pb-10 mt-10 mx-auto grid max-w-7xl gap-x-8 gap-y-8 px-6 lg:px-8 xl:grid-cols-2">
+          <p class="mt-4 font-bold text-xl text-gray-900 uppercase">Operasional</p>
 
+          <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+            @foreach ( $operasionals as $operasional )
             <li>
               <div class="flex items-center gap-x-6">
-                <img class="h-16 w-16 rounded-full" src="{{ asset('img/struktur.jpeg') }}" alt="">
+                <img class="h-16 w-16 rounded-full" src="{{ Storage::url($operasional->photo) }}" alt="">
                 <div>
-                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">M. Wahyu Hidayat </h3>
-                  <p class="text-sm font-semibold leading-6 text-gray-400">QC</p>
+                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{ $operasional->name }}</h3>
+                  <p class="text-sm font-semibold leading-6 text-gray-400">{{ $operasional->jabatan }}</p>
                 </div>
               </div>
             </li>
+            @endforeach
+            
+          </ul>
+        </div>
 
+        <div class="border-b-2 pb-10 mt-10 mx-auto grid max-w-7xl gap-x-8 gap-y-8 px-6 lg:px-8 xl:grid-cols-2">
+          <p class="mt-4 font-bold text-xl text-gray-900 uppercase">SDM/HRD</p>
+
+          <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+            @foreach ( $sdms as $sdm )
             <li>
               <div class="flex items-center gap-x-6">
-                <img class="h-16 w-16 rounded-full" src="{{ asset('img/struktur.jpeg') }}" alt="">
+                <img class="h-16 w-16 rounded-full" src="{{ Storage::url($sdm->photo) }}" alt="">
                 <div>
-                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">M. Wahyu Hidayat </h3>
-                  <p class="text-sm font-semibold leading-6 text-gray-400">QC</p>
+                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{ $sdm->name }}</h3>
+                  <p class="text-sm font-semibold leading-6 text-gray-400">{{ $sdm->jabatan }}</p>
                 </div>
               </div>
             </li>
+            @endforeach
+            
+          </ul>
+        </div>
+
+        <div class="border-b-2 pb-10 mt-10 mx-auto grid max-w-7xl gap-x-8 gap-y-8 px-6 lg:px-8 xl:grid-cols-2">
+          <p class="mt-4 font-bold text-xl text-gray-900 uppercase">R&D</p>
+
+          <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+            @foreach ( $rds as $rd )
+            <li>
+              <div class="flex items-center gap-x-6">
+                <img class="h-16 w-16 rounded-full" src="{{ Storage::url($rd->photo) }}" alt="">
+                <div>
+                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{ $rd->name }}</h3>
+                  <p class="text-sm font-semibold leading-6 text-gray-400">{{ $rd->jabatan }}</p>
+                </div>
+              </div>
+            </li>
+            @endforeach
+            
+          </ul>
+        </div>
+
+        <div class="border-b-2 pb-10 mt-10 mx-auto grid max-w-7xl gap-x-8 gap-y-8 px-6 lg:px-8 xl:grid-cols-2">
+          <p class="mt-4 font-bold text-xl text-gray-900 uppercase">Marketing</p>
+
+          <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+            @foreach ( $marketings as $marketing )
+            <li>
+              <div class="flex items-center gap-x-6">
+                <img class="h-16 w-16 rounded-full" src="{{ Storage::url($marketing->photo) }}" alt="">
+                <div>
+                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{ $marketing->name }}</h3>
+                  <p class="text-sm font-semibold leading-6 text-gray-400">{{ $marketing->jabatan }}</p>
+                </div>
+              </div>
+            </li>
+            @endforeach
+            
+          </ul>
+        </div>
+
+
+        <div class="border-b-2 pb-10 mt-10 mx-auto grid max-w-7xl gap-x-8 gap-y-8 px-6 lg:px-8 xl:grid-cols-2">
+          <p class="mt-4 font-bold text-xl text-gray-900 uppercase">Keuangan</p>
+
+          <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2">
+            @foreach ( $keuangans as $keuangan )
+            <li>
+              <div class="flex items-center gap-x-6">
+                <img class="h-16 w-16 rounded-full" src="{{ Storage::url($keuangan->photo) }}" alt="">
+                <div>
+                  <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900">{{ $keuangan->name }}</h3>
+                  <p class="text-sm font-semibold leading-6 text-gray-400">{{ $keuangan->jabatan }}</p>
+                </div>
+              </div>
+            </li>
+            @endforeach
             
           </ul>
         </div>
